@@ -1,0 +1,35 @@
+body{
+   background-image: url("home");
+    font-size : 22px;
+}
+#conteneur{
+    display:flex;
+    flex-direction: row;
+}
+#conteneur1{
+    display:flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+#conteneur2{
+   display:table;
+    
+    flex-direction: row;
+    
+}    
+
+.main_page{
+    text-decoration:underline;
+ 
+}
+h1{
+      text-align: left;
+}
+
+.element{
+    margin :inherit;
+}
+.element2{
+    margin :inherit;
+}
