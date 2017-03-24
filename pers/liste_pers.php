@@ -6,29 +6,16 @@ include("header.php");
 //echo $idm->getIdentity();
 require("db_config.php");
 try {
-$db= new PDO("mysql:hostname=$hostname;dbname=$dbname",$username);
+$db= new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
 $db->setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 $SQL="SELECT * FROM personnes";
 $res =$db->query($SQL);
 if ($res->rowCount()==0){
     echo "<P>La liste est vide";
-       ?>
-        <div class="titre">Ajouter une personne </div>
-            <form action="ajout_pers.php" method="post">
-                <table>
-                    <tr>
-                        <td><label for="inputNom" class="control-label">Nom</label></td>
-                            <td><input type="text" name="nom" class="form-control" id="inputNom" placeholder="nom" required value="<?= $data['nom']??""?>"></td>
-                    </tr>      <tr>
-                        <td><label for="inputPrenom" class="control-label">Prenom</label></td>
-                            <td><input type="text" name="prenom" class="form-control" id="inputPrenom" placeholder="prenom" required value="<?= $data['prenom']??""?>"></td>
-                    </tr>
-    
-                </table>
-        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Valider</button>
-                    </div>
-</form>
+// ajoute un formulaire et appel le formulaire a interieur 
+?>
+  <td><a href='pers/ajout_form_pers.php?pid=<?php echo $row['pid'] ?>'>Modifier</a></td>
+
 <?php
 }else {
     ?>    
@@ -42,8 +29,8 @@ while($row=$res->fetch()) {
       <tr>
           <td>Nom : <?php echo htmlspecialchars($row['nom'])?></td> 
           <td>Prenom : <?php echo htmlspecialchars($row['prenom'])?></td>
-          <td><a href='pers/sup_pers.php?pid=<?php echo $row['pid'] ?>'>Supprimer</a></td>
           <td><a href='pers/mod_form_pers.php?pid=<?php echo $row['pid'] ?>'>Modifier</a></td>
+          <td><a href='pers/sup_pers.php?pid=<?php echo $row['pid'] ?>'>Supprimer</a></td>
         
     </tr>
 
@@ -51,22 +38,7 @@ while($row=$res->fetch()) {
  };  
 echo "</table>\n";
     ?>
-     <div class="titre">Ajouter une personne </div>
-            <form action="ajout_pers.php" method="post">
-                <table>
-                    <tr>
-                        <td><label for="inputNom" class="control-label">Nom</label></td>
-                            <td><input type="text" name="nom" class="form-control" id="inputNom" placeholder="nom" required value="<?= $data['nom']??""?>"></td>
-                    </tr>      <tr>
-                        <td><label for="inputPrenom" class="control-label">Prenom</label></td>
-                            <td><input type="text" name="prenom" class="form-control" id="inputPrenom" placeholder="prenom" required value="<?= $data['prenom']??""?>"></td>
-                    </tr>
-    
-                </table>
-        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Valider</button>
-                    </div>
-</form>
+      <td><a href='pers/ajout_form_pers.php?pid=<?php echo $row['pid'] ?>'>Ajouter une Personne </a></td>
     <?php
 $db=null;
      };

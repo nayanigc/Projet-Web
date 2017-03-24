@@ -15,7 +15,6 @@ foreach (['login', 'password'] as $name) {
         $error .= "La valeur du champs '$name' ne doit pas être vide";
     }
 }
-
 // do the next step if no errors
 if (empty($error)) {
     $data['login'] = $_POST['login'];

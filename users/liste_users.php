@@ -5,6 +5,7 @@ include("header.php");
 // mettre un fond vert pour les admis et un fond bleu pour les utilisateur 
 //echo $idm->getIdentity();
 require("db_config.php");
+//mettre un message quand le login est deja pris
 try {
 $db= new PDO("mysql:hostname=$hostname;dbname=$dbname",$username);
 $db->setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -23,9 +24,7 @@ while($row=$res->fetch()) {
 
       <tr>
           <td><?php echo htmlspecialchars($row['login'])?></td>
-          <td><?php echo $row['mdp']?></td>
-           <td><a href='users/mod_form_user.php?uid=<?php echo $row['uid'] ?>'>Modifier</a></td>
-          <td>  </td>
+          <td><a href='users/mod_form_user.php?uid=<?php echo $row['uid'] ?>'>Modifier le mot de passe</a></td>
         
     </tr>
 
@@ -33,28 +32,8 @@ while($row=$res->fetch()) {
  };  
 echo "</table>\n";
     ?>
-    <div class="titre">Ajouter un Utilisateur</div>
-            <form action="ajout_users.php" method="post">
-                <table>
-                    <tr>
-                        <td><label for="inputLogin" class="control-label">Login</label></td>
-                            <td><input type="text" name="login" class="form-control" id="inputLogin" placeholder="login" required value="<?= $data['login']??""?>"></td>
-                    </tr>
-                    <tr>
-                        <td><label for="inputMDP" class="control-label">MDP</label></td>
-                            <td><input type="password" name="mdp" class="form-control" id="inputMDP" placeholder="Mot de passe" required value=""></td>
-                    </tr>
-                    <tr>
-                        <td><label for="inputMDP2" class="control-label">Répéter MDP</label></td>
-                            <td><input type="password" name="mdp2" class="form-control" id="inputMDP" placeholder="Répéter le mot de passe" required value=""></td>
-                    </tr>
-                </table>
-        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Valider</button>
-                    </div>
-           
-<?php
-echo "</form>";
+    <td><a href='users/ajout_form_user.php?uid=<?php echo $row['uid'] ?>'>Ajouter une Utilisateur en plus </a></td>
+        <?php
 $db=null;
      };
 }catch (PDOException $e){

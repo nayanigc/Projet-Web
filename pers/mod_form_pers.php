@@ -1,5 +1,5 @@
 <?php
-include("header.php");
+include("../header.php");
 if(!isset($_GET['pid'])){
     echo "Erreur: pid non défini";
     echo "PID : " . $_GET['pid'];
@@ -24,5 +24,5 @@ if(!isset($_GET['pid'])){
                       
                     </div>
    <?php
-    include("footer.php");
+    include("../footer.php");
                   ?>

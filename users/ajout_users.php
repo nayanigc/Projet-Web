@@ -2,10 +2,10 @@
 session_start();
 
 $page_title="Ajouter un utilisateur supplementaire";
-include("header.php");
+include("../header.php");
 
 if((!isset($_POST['login']))||(!isset($_POST['mdp']))){
-    include("liste_users.php");
+    include("users/liste_users.php");
     
 }else{
     $uid = intval($_SESSION['uid']); 
@@ -14,10 +14,10 @@ if((!isset($_POST['login']))||(!isset($_POST['mdp']))){
     $role='user';
    
 if ($login=="") {  
-    include("liste_users.php");
+    include("users/liste_users.php");
 } else {
 
- require("db_config.php");
+ require("../db_config.php");
     try{
         $db=new PDO("mysql:host=$hostname;dbname=$dbname",$username);
         $db-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -37,5 +37,5 @@ echo "<a href='../home.php'>Revenir</a> à la page de gestion";
     }
     }
 }
-include("footer.php");
+include("../footer.php");
 ?>

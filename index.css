@@ -14,7 +14,7 @@ body{
 
 #conteneur2{
    display:table;
-    
+    float: right;
     flex-direction: row;
     
 }    
@@ -32,4 +32,6 @@ h1{
 }
 .element2{
     margin :inherit;
+    float: right;
+    
 }

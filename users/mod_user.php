@@ -16,10 +16,11 @@ $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 $SQL ="SELECT mdp FROM users WHERE uid =:uid";
     $st=$db->prepare($SQL);
     $uid= $_GET["uid"];
-$st->execute(['uid'=>$uid]);
+   $st->execute(['uid'=>$uid]);
 if ($st->rowCount()==0){
     echo"<p> Erreur dans uid </p>\n";
 }else{
+
     $mdp=password_hash($_POST['mdp'],PASSWORD_DEFAULT);
     if ($mdp==""){
         include("mod_form_user.php");
