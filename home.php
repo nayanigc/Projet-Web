@@ -17,6 +17,6 @@ if ($idm->getRole() == 'admin'){
 include("users/liste_users.php");
 include("pers/liste_pers.php");
 include("itype/liste_type.php");
-include("id/liste_id.php");
+//include("id/liste_id.php");
 }
 include("footer.php");

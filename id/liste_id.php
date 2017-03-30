@@ -6,15 +6,18 @@ include("header.php");
 //echo $idm->getIdentity();
 require("db_config.php");
 try {
-$db= new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
+$db= new PDO("mysql:hostname=$hostname;dbname=$dbname",$username);
 $db->setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-$SQL="SELECT * FROM personnes";
+$SQL="SELECT personnes.nom as nomPersonne, prenom, itypes.nom as nomType, valeur 
+        FROM identifications
+        INNER JOIN personnes ON identifications.pid = personnes.pid
+        INNER JOIN itypes ON identifications.tid = itypes.tid"
+;
 $res =$db->query($SQL);
 if ($res->rowCount()==0){
     echo "<P>La liste est vide";
 // ajoute un formulaire et appel le formulaire a interieur 
 ?>
-  <td><a href='pers/ajout_form_pers.php?pid=<?php echo $row['pid'] ?>'>Modifier</a></td>
 
 <?php
 }else {
@@ -27,20 +30,17 @@ while($row=$res->fetch()) {
 ?>
 
       <tr>
-          <td>Nom : <?php echo htmlspecialchars($row['nom'])?></td> 
+          <td>Nom : <?php echo htmlspecialchars($row['nomPersonne'])?></td> 
           <td>Prenom : <?php echo htmlspecialchars($row['prenom'])?></td>
-          <td><a href='pers/mod_form_pers.php?pid=<?php echo $row['pid'] ?>'>Modifier</a></td>
-          <td><a href='pers/sup_pers.php?pid=<?php echo $row['pid'] ?>'>Supprimer</a></td>
-          <td><a href='pers/info_pers.php?pid=<?php echo $row['pid'] ?>'>Gerer les informations personnelles</a> 
-          </td>
-        
+          <td>Nom  du type : <?php echo htmlspecialchars($row['nomType'])?></td> 
+          <td>valeur : <?php echo htmlspecialchars($row['valeur'])?></td>
     </tr>
 
 <?php
  };  
 echo "</table>\n";
     ?>
-      <td><a href='pers/ajout_form_pers.php?pid=<?php echo $row['pid'] ?>'>Ajouter une Personne </a></td>
+      <td><a href='id/ajout_form_id.php?pid=<?php echo $row['pid'] ?>'>Ajouter une Personne  au complet </a></td>
     <?php
 $db=null;
      };
