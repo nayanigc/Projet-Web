@@ -2,6 +2,7 @@
 $page_title ="Information personnel";
 include("../header.php");
 require("../db_config.php");
+
 $pid = $_GET['pid'];    
 try {
 $db= new PDO("mysql:hostname=$hostname;dbname=$dbname",$username);
@@ -17,7 +18,8 @@ $SQL="SELECT personnes.nom as nomPersonne, prenom, itypes.nom as nomType, valeur
 if ($st->rowCount()==0){
     echo "<P>La liste est vide"; 
     ?>
-      <td><a href='ajout_form_id.php?pid=<?php echo $pid ?>'>Ajouter une Personne au complet </a></td>
+      <td><a href='ajout_form_id.php?pid=<?php echo $pid ?>&&?tid=<?php echo 
+      $tid?>'>Ajouter une Personne au complet </a></td>
     <?php
 }else {
     ?>    
@@ -40,7 +42,7 @@ while($row=$st->fetch()) {
 echo "</table>\n";
     
   ?>
-      <td><a href='ajout_form_id.php?pid=<?php echo $pid ?>'>Ajouter une Personne au complet </a></td>
+     <td><a href='ajout_form_id.php?pid=<?php echo $pid ?>'>Ajouter une Personne au complet </a></td>
     <?php
     
 $db=null;

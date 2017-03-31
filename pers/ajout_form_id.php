@@ -1,5 +1,5 @@
 <?php 
-if(!isset($_GET['pid'])){
+if(!isset($_GET['pid']) ){
     include("info_pers.php");
 } else {
     $pid = $_GET['pid'];

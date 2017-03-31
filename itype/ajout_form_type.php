@@ -1,10 +1,9 @@
 <?php
+include("../header.php");
 if(!isset($_GET['tid'])){
-    include("liste_type.php");
-} else {
-    $tid = $_GET['tid'];
+    echo "Erreur: uid non défini";
+    echo "UID : " . $_GET['uid'];
 }
-echo "VAR".row['tid'];
 ?>
 <div class="titre">Ajouter un type </div>
             <form action="ajout_type.php" method="post">

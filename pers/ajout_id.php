@@ -1,23 +1,26 @@
+
+
+
 <?php
 session_start();
-
+//TODO faire une recuperation de tid qui va permettre dajoute ou pas un nom
 $page_title="Ajouter une id";
 include("../header.php");
 
-if(!isset($_POST['nomType'])){
-    echo "NOM TYPE";
-}
 if(!isset($_POST['valeur'])){
-    echo "VALEUR";    
-} 
+        include("ajout_form_id.php");
+}else{
+}
+if(!isset($_GET['tid'])){
+    echo "TID"; 
+}
 if(!isset($_GET['pid'])){
     echo "PID"; 
     //include("ajout_form_id.php");
 } else {
-    $nomType=$_POST['nomType'];
-    $valeur=$_POST['valeur'];
     $pid = $_GET['pid'];
-    if ($type =="" || $valeur="") {  
+}
+    if (($valeur="")) {  
         include("ajout_form_id.php");
     } else {
      
@@ -26,17 +29,22 @@ if(!isset($_GET['pid'])){
         try{
             $db=new PDO("mysql:host=$hostname;dbname=$dbname",$username);
             $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-            $SQL="SELECT nom,tid FROM itypes WHERE nom = ?";
+            $SQL="SELECT personnes.nom as nomPersonne, prenom, itypes.nom as nomType, valeur
+        FROM identifications
+        INNER JOIN personnes ON identifications.pid = personnes.pid
+        INNER JOIN itypes ON identifications.tid = itypes.tid
+        WHERE itypes.nom=?";
             $st = $db->prepare($SQL);
-            $res = $st->execute(array($nomType));
+            $res = $st->execute(array($nom));
             
-            if(!$res){
-                $SQL = "INSERT INTO identification VALUES (?,DEFAULT,?)";
+            if($st->rowCount()==0){
+                $SQL = "INSERT INTO identifications VALUES (?,?,?)";
                 $st = $db->prepare($SQL);
-                $res = $st->execute(array($pid,$nomType,$valeur));
+                $res = $st->execute(array($pid,,$valeur));
                 echo "L'ajout a été effectué";
-            }else{
-               echo $type." existe déjà"; 
+            }else if ($pid){
+               echo $nomType." existe déjà"; 
+        
             }
             echo "<a href='../home.php'>Revenir</a> à la page de gestion";
 
@@ -45,6 +53,6 @@ if(!isset($_GET['pid'])){
             echo "Erreur SQL: ".$e->getMessage();
         }
     }
-}
+
 include("../footer.php");
 ?>
