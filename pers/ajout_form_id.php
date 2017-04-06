@@ -7,7 +7,7 @@ if(!isset($_GET['pid']) ){
     try{
         $db=new PDO("mysql:host=$hostname;dbname=$dbname",$username);
         $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $SQL="SELECT nom FROM itypes";
+        $SQL="SELECT * FROM itypes";
         $res = $db->query($SQL);
         $db=null;
      }catch (PDOException $e){
@@ -16,18 +16,18 @@ if(!isset($_GET['pid']) ){
 }
 ?>
 
-<div class="titre"> <h4>Ajouter un autre moyenne identification </h4></div>
+<div class="titre"> <h4>Ajouter un autre moyen identification </h4></div>
             <form action="ajout_id.php?pid=<?php echo $pid ?>" method="post">
                 <table>
                     <tr>
                      
        <label for="inputNomType" class="control-label">identification</label>
                 <tr>
-                        <select name="nomType">
+                        <select name="tid">
                                 <p>
                                     <?php
                                         while($row=$res->fetch()){
-                                            echo "<option>".$row['nom']."</option><br/>";
+                                            echo "<option value=".$row['tid'].">".$row['nom']."</option><br/>";
                                         }
                                     ?>
                                 </p>
