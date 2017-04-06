@@ -14,9 +14,10 @@ include("header.php");
 echo "Hello " . $idm->getIdentity().". Your uid is: ". $idm->getUid() .". Your role is: ".$idm->getRole();
 if ($idm->getRole() == 'admin'){
 //echo "Escaped values: ".$e_($ci->idm->getIdentity());
-include("users/liste_users.php");
-include("pers/liste_pers.php");
-include("itype/liste_type.php");
-//include("id/liste_id.php");
+    include("users/liste_users.php");
+    include("pers/liste_pers.php");
+    include("itype/liste_type.php");
+    include("cat-eve/liste_cat.php");
+    include("cat-eve/liste_eve.php");  
 }
 include("footer.php");

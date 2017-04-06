@@ -9,15 +9,12 @@ require("db_config.php");
 try {
 $db= new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
 $db->setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-$SQL="SELECT * FROM personnes";
+$SQL="SELECT * FROM evenements";
 $res =$db->query($SQL); 
-
    
 if ($res->rowCount()==0){
     echo "<P>La liste est vide";
 ?>
-<td><a href='pers/ajout_form_pers.php?pid=<?php echo $row['pid'] ?>'>Ajouter</a></td>
-
 <?php
 }else {
     ?>    
@@ -28,14 +25,9 @@ if ($res->rowCount()==0){
 while($row=$res->fetch() ) {
 ?>
 
+          <td>Titre : <?php echo htmlspecialchars($row['nom'])?></td>
       <tr>
-          <td>Nom : <?php echo htmlspecialchars($row['nom'])?></td> 
-          <td>Prenom : <?php echo htmlspecialchars($row['prenom'])?></td>
-          <td><a href='pers/mod_form_pers.php?pid=<?php echo $row['pid'] ?>'>Modifier</a></td>
-          <td><a href='pers/sup_pers.php?pid=<?php echo $row['pid'] ?>'>Supprimer</a></td>
-
-          <td><a href='pers/info_pers.php?pid=<?php echo $row['pid'] ?>'>Gerer les informations personnelles</a> 
-          </td>
+          <td>Description : <?php echo htmlspecialchars($row['nom'])?></td>
         
     </tr>
 
@@ -43,7 +35,6 @@ while($row=$res->fetch() ) {
  };  
 echo "</table>\n";
     ?>
-      <td><a href='pers/ajout_form_pers.php?pid=<?php echo $row['pid'] ?>'>Ajouter une Personne </a></td>
     <?php
 $db=null;
      };
