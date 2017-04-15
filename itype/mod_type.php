@@ -12,7 +12,7 @@ if(!isset($_GET['tid'])){
     $nom = $_POST['nom'];   
     $tid = $_GET['tid'];
     require("../db_config.php");
-    $db = new PDO("mysql:host=$hostname;dbname=$dbname;charset=utf8",$username,$password);
+    $db = new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username,$password);
     $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     $SQL ="SELECT nom FROM itypes WHERE tid =:tid";
         $st=$db->prepare($SQL);

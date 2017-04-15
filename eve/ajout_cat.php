@@ -18,7 +18,7 @@ if ($nom=="") {
 <?php
  require("../db_config.php");
     try{
-        $db=new PDO("mysql:host=$hostname;dbname=$dbname;charset=utf8",$username);
+        $db=new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
         $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $SQL="SELECT nom FROM categories WHERE nom =?";
         $st = $db->prepare($SQL);

@@ -1,8 +1,9 @@
 
 <?php
 $page_title ="Liste type";
-include("header.php");
-require("db_config.php");
+include("../header.php");
+include("type.php");
+require("../db_config.php");
 try{
     
     $db = new PDO("mysql:hostname=$hostname;dbname=$dbname",$username);
@@ -12,7 +13,7 @@ try{
         if ($res->rowCount()==0){
         echo"<p>La liste est vide";
             ?>
-             <td><a href='itype/ajout_form_type.php?tid=<?php echo $row['tid'] ?>'>Ajouter</a></td>
+             <td><a href='ajout_form_type.php?tid=<?php echo $row['tid'] ?>'>Ajouter</a></td>
         <?php
     }else{
     ?>
@@ -20,13 +21,23 @@ try{
     <style>table {border-collapse: collapse}
         td,th {border: 1px solid black}
     </style>
+	
+	<table class="table table-striped">
+	<thead>
+		<th>Nom</th>
+		<th>Modifier</th>	
+		<th>Supprimer</th>
+
+	</thead> 
+		
+
 <?php
  while($row=$res->fetch()){
      ?>
     <tr>
-    <td> Nom: <?php echo htmlspecialchars($row['nom'])?></td>
-      <td><a href='itype/mod_form_type.php?tid=<?php echo $row['tid'] ?>'>Modifie</a></td>
-        <td><a href='itype/sup_type.php?tid=<?php echo $row['tid'] ?>'>Supprimer</a></td>
+    <td> <?php echo htmlspecialchars($row['nom'])?></td>
+      <td><a href='mod_form_type.php?tid=<?php echo $row['tid'] ?>'>Modifie</a></td>
+        <td><a href='sup_type.php?tid=<?php echo $row['tid'] ?>'>Supprimer</a></td>
     </tr>
     
                        
@@ -34,12 +45,13 @@ try{
         };
 echo "</table>\n";
 ?>
-      <td><a href='itype/ajout_form_type.php?tid=<?php echo $row['tid'] ?>'>Ajouter un type </a></td>
+	</table>
+      <td><a href='ajout_form_type.php?tid=<?php echo $row['tid'] ?>'>Ajouter un type </a></td>
 <?php
             $db = null;
  };
 }catch (PDOException $e){
     echo"Erreur SQL:".$e->getMessage();
 }
-include("footer.php");
+include("../footer.php");
 ?>

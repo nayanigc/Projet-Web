@@ -4,20 +4,17 @@ require("auth/EtreAuthentifie.php");
 
 $title = 'Accueil'; 
 include("header.php");
-?>
 
-<a href="<?= $pathFor['logout'] ?>" title="Logout">Logout</a>
-
-<?php
-     $_SESSION['uid'] = $idm->getUid();
-
-echo "Hello " . $idm->getIdentity().". Your uid is: ". $idm->getUid() .". Your role is: ".$idm->getRole();
+$_SESSION['uid'] = $idm->getUid();
+include("mise_en_page2.php");
+//echo "Hello " . $idm->getIdentity().". Your uid is: ". $idm->getUid() .". Your role is: ".$idm->getRole();
 if ($idm->getRole() == 'admin'){
 //echo "Escaped values: ".$e_($ci->idm->getIdentity());
-    include("users/liste_users.php");
-    include("pers/liste_pers.php");
-    include("itype/liste_type.php");
-    include("cat-eve/liste_cat.php");
-    include("cat-eve/liste_eve.php");  
-}
+    include("mise_en_page.php");
+}?>
+
+<div class="deconnexion"><a href="<?= $pathFor['logout'] ?>" title="Logout" style="color:white">Logout</a></div>
+
+<?php
 include("footer.php");
+?>

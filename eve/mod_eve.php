@@ -1,30 +1,33 @@
 <?php
 
-$page_title="Modifier le nom type";
+$page_title="Modifier";
 
 include("../header.php");
 
-if(!isset($_GET['tid'])){
+if(!isset($_GET['eid'])){
     echo "<p>Erreur</p>\n";
 
 }else{
     try{
- //   $pid = $_GET['pid'];
-    $tid = $_GET['tid'];
-    $valeur = $_POST['valeur'];   
+    $eid = $_GET['eid'];
+  $cid = $_POST['cid'];
+$intitule= $_POST['intitule'];
+$description = $_POST['description'];
+$dateDebut = $_POST['datedebut'];
+$dateFin = $_POST['datefin'];
+$type = $_POST['type'];   
     require("../db_config.php");
     $db = new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username,$password);
     $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    $SQL ="SELECT valeur FROM identifications WHERE tid =:tid";
+    $SQL="SELECT * FROM evenements WHERE  eid=:eid";
         $st=$db->prepare($SQL);
-        $tid= $_GET['tid'];
-    $st->execute(['tid'=>$tid]);
+    $st->execute(['eid'=>$eid]);
     if ($st->rowCount()==0){
-        echo"<p> Erreur dans tid </p>\n";
+        echo"<p> Erreur dans eid </p>\n";
     }else{
-           $SQL="UPDATE identifications SET valeur=? WHERE tid=?";
+           $SQL="UPDATE evenements SET intitule=?,description=?,dateDebut=?,dateFin=?,type=?,cid=? WHERE eid=? ";
             $st = $db->prepare($SQL);
-            $res = $st->execute(array($valeur,$tid));
+            $res = $st->execute(array($intitule,$description,$dateDebut,$dateFin,$type,$cid,$eid));
         if (!$res)
             echo "<p>Erreur de modification</p>";
        else echo "<p>La modification a été effectuée</p>";         

@@ -3,12 +3,27 @@ include("../header.php");
 if(!isset($_GET['pid'])){
     echo "Erreur: pid non défini";
     echo "PID : " . $_GET['pid'];
+}else {
+    require("../db_config.php");
+    $pid=$_GET['pid'];
+    try{
+        $db = new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username,$password);
+        $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $SQL = "SELECT nom,prenom FROM personnes WHERE pid=?";
+        $st= $db->prepare($SQL);
+        $res = $st->execute(array($pid));
+        while($row=$st->fetch()){
+            echo 'Nom: '.$row['nom'].'</br>';
+            echo 'Prenom: '.$row['prenom'].'</br>'.'</br>';
+        }
+    }catch(PDOException $e){
+        echo "Erreur SQL:".$e->getMessage();
+    }
 }
 ?>
 
 <div class="titre">Modifie le mot  de passe </div>
-            <form action="mod_pers.php?pid=<?php echo $_GET['pid'] ?>" method="post">
-
+<form action="mod_pers.php?pid=<?php echo $_GET['pid'] ?>" method="post">
 <table> 
         <tr>
                         <td><label for="inputNom" class="control-label">Nom</label></td>

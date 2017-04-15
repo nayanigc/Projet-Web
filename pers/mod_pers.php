@@ -10,18 +10,18 @@ if(!isset($_GET['pid'])){
 }else{
     try{
     $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];      
-    $pid = $_GET['pid'];
+    $prenom = $_POST['prenom'];
     require("../db_config.php");
-    $db = new PDO("mysql:host=$hostname;dbname=$dbname;charset=utf8",$username,$password);
+    $db = new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username,$password);
     $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     $SQL ="SELECT nom,prenom FROM personnes WHERE pid =:pid";
         $st=$db->prepare($SQL);
         $pid= $_GET["pid"];
-    $st->execute(['pid'=>$pid]);
-    if ($st->rowCount()==0){
+    $st->query($SQL);
+    if ($st->rowCount() == 0){
         echo"<p> Erreur dans pid </p>\n";
     }else{
+           echo "salut";
            $SQL="UPDATE personnes SET nom=?,prenom=? WHERE pid=?";
             $st = $db->prepare($SQL);
             $res = $st->execute(array($nom,$prenom,$pid));

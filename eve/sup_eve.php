@@ -1,12 +1,12 @@
 <?php
 session_start();
-$page_title="Supprime une personne";
+$page_title="Supprime une type";
 include("../header.php");
 
-if (!isset($_GET['pid'])){
+if (!isset($_GET['eid'])){
     echo"<p>Erreur</p>\n";
 }else if (!isset($_POST["supprimer"])&&!isset($_POST["annuler"])){
-    include("del_form.php");
+    include("del_form_cat.php");
 }else if ( isset ($_POST["annuler"])){
     echo " Operation annulée";
 }else{
@@ -14,10 +14,10 @@ if (!isset($_GET['pid'])){
     try{
         $db= new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
         $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $SQL="DELETE FROM personnes WHERE pid =?";
-        $pid=$_GET["pid"];
+        $SQL="DELETE FROM evenements WHERE eid =?";
+        $eid=$_GET["eid"];
         $st= $db->prepare($SQL);
-        $res= $st->execute(array($pid));
+        $res= $st->execute(array($eid));
         
         if (!$res)
             echo"<p>Erreur</p>\n";

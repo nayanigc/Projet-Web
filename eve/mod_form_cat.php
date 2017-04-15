@@ -3,6 +3,21 @@ include("../header.php");
 if(!isset($_GET['cid'])){
     echo "Erreur: cid non défini";
     echo "CID : " . $_GET['cid'];
+}else {
+    require("../db_config.php");
+    $cid=$_GET['cid'];
+    try{
+        $db = new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username,$password);
+        $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $SQL = "SELECT nom FROM categories WHERE cid=?";
+        $st= $db->prepare($SQL);
+        $res = $st->execute(array($cid));
+        while($row=$st->fetch()){
+            echo 'Nom: '.$row['nom'].'</br>';
+        }
+    }catch(PDOException $e){
+        echo "Erreur SQL:".$e->getMessage();
+    }
 }
 ?>
 

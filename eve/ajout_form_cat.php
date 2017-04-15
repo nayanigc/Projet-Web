@@ -6,7 +6,7 @@ if(!isset($_GET['cid'])){
 }
 ?>
 <div class="titre">Ajouter un categorie </div>
-            <form action="ajout_cat.php?" method="post">
+            <form action="ajout_cat.php" method="post">
                 <table>
                     <tr>
                         <td><label for="inputNom" class="control-label">Nom</label></td>

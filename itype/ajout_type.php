@@ -16,12 +16,13 @@ if ($nom=="") {
 
  require("../db_config.php");
     try{
-        $db=new PDO("mysql:host=$hostname;dbname=$dbname",$username);
+        $db=new PDO("mysql:hostname=$hostname;dbname=$dbname",$username);
         $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $SQL="SELECT nom FROM itypes WHERE nom =?";
         $st = $db->prepare($SQL);
         $res = $st->execute(array($nom));
         if ($st->rowCount()==0){
+            echo $st->rowCount();
             $SQL = "INSERT INTO itypes  VALUES (DEFAULT,?)";
             $st = $db->prepare($SQL);
             $res = $st->execute(array($nom));
