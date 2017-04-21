@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" type="text/css" href="styles.css"/>
     <title>Accueil</title>
 </head>
 <body style="background: url(home.jpg);">  

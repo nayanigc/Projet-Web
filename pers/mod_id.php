@@ -9,7 +9,7 @@ if(!isset($_GET['tid'])){
 
 }else{
     try{
- //   $pid = $_GET['pid'];
+
     $tid = $_GET['tid'];
     $valeur = $_POST['valeur'];   
     require("../db_config.php");

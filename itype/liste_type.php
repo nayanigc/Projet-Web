@@ -13,12 +13,14 @@ try{
         if ($res->rowCount()==0){
         echo"<p>La liste est vide";
             ?>
-             <td><a href='ajout_form_type.php?tid=<?php echo $row['tid'] ?>'>Ajouter</a></td>
+<div class="ajouter" title="Ajouter une type"><a class="a" href='ajout_form_type.php?tid=<?php echo $row['tid'] ?>'>Ajouter</a></div>
+        
         <?php
     }else{
     ?>
-<table>
-    <style>table {border-collapse: collapse}
+
+    <style>
+		table {border-collapse: collapse}
         td,th {border: 1px solid black}
     </style>
 	
@@ -29,15 +31,13 @@ try{
 		<th>Supprimer</th>
 
 	</thead> 
-		
-
 <?php
  while($row=$res->fetch()){
      ?>
     <tr>
-    <td> <?php echo htmlspecialchars($row['nom'])?></td>
-      <td><a href='mod_form_type.php?tid=<?php echo $row['tid'] ?>'>Modifie</a></td>
-        <td><a href='sup_type.php?tid=<?php echo $row['tid'] ?>'>Supprimer</a></td>
+       <td><?php echo htmlspecialchars($row['nom'])?></td>
+       <td><a href='mod_form_type.php?tid=<?php echo $row['tid'] ?>'>Modifie</a></td>
+       <td><a href='sup_type.php?tid=<?php echo $row['tid'] ?>'>Supprimer</a></td>
     </tr>
     
                        
@@ -46,7 +46,7 @@ try{
 echo "</table>\n";
 ?>
 	</table>
-      <td><a href='ajout_form_type.php?tid=<?php echo $row['tid'] ?>'>Ajouter un type </a></td>
+   <div class="ajouter" title="Ajouter une type"><a class="a" href='ajout_form_type.php?tid=<?php echo $row['tid'] ?>'>Ajouter</a></div>
 <?php
             $db = null;
  };

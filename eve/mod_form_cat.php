@@ -13,7 +13,14 @@ if(!isset($_GET['cid'])){
         $st= $db->prepare($SQL);
         $res = $st->execute(array($cid));
         while($row=$st->fetch()){
-            echo 'Nom: '.$row['nom'].'</br>';
+			?>
+<div style="   width: 21%;
+    position: relative;
+    right: -40%;
+    bottom: -25%;
+	margin-top: 15%; ">
+	<?php
+            echo '<h4>'.'Nom: '.$row['nom'].'</h4>';
         }
     }catch(PDOException $e){
         echo "Erreur SQL:".$e->getMessage();
@@ -21,18 +28,16 @@ if(!isset($_GET['cid'])){
 }
 ?>
 
-<div class="titre">Modifie le nom de la categorie </div>
+<div class="titre" >
+	<h4><b>Modifie le nom de la categorie</b></h4> 
             <form action="mod_cat.php?cid=<?php echo $_GET['cid'] ?>" method="post">
 
-<table> 
-        <tr>
-                        <td><label for="inputNom" class="control-label">Nom</label></td>
-                            <td><input type="text" name="nom" class="form-control" id="inputNom" placeholder="nom" required value="<?= $data['nom']??""?>"></td>
-                    </tr>      <tr>
-                </table>
-                  <div class="form-group">
-                            <button type="submit" class="btn btn-primary"> Valider</button>
-                      
+<label for="inputNom" class="control-label">Nom</label>
+<input type="text" name="nom" class="form-control" id="inputNom" placeholder="nom" required value="<?= $data['nom']??""?>">
+ <div class="form-group">
+ <button type="submit" class="btn btn-primary" style="margin-top:4%;"> Valider</button>
+				</div>
+	 </form>
                     </div>
    <?php
     include("../footer.php");

@@ -1,0 +1,67 @@
+#inlineClass{
+	display: -webkit-box !important;
+	width: 42%;
+}
+
+div{
+	margin-top: 3% !important;
+}
+
+div.intitu{
+	position: relative;
+	right: -32%;
+}
+
+#form-select{    
+	position: relative !important;
+    right: -29% !important;
+    margin-top: -11% !important;
+}
+
+div.inline-element-root{
+	display: inline-grid;
+}
+
+div.titre-eve{
+	width: 50%;
+	margin: 25%;
+	/*margin-top: 10% !important;*/
+	margin-bottom: auto;
+}
+
+.inline-element1{
+	position: relative;
+	right: -119%;
+    margin-top: -40%;
+}
+
+.inline-element2{
+    position: relative;
+    right: -236%;
+    margin-top: -40%;
+}
+
+div.cat-inline{
+	position: relative;
+	left: 0%;
+	width: 100%;
+}
+
+.form-input{
+	position: relative;
+    right: -30%;
+    margin-top: -17%;
+    width: 141% !important;
+}
+
+.titre{
+	width: 50%;
+	margin: 25%;
+	margin-top: 10% !important;
+	margin-bottom: auto;
+}
+
+button {
+	margin-top: 2% !important;
+	margin-left: 91% !important;
+}

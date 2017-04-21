@@ -5,16 +5,22 @@ if(!isset($_GET['cid'])){
     echo "CID : " . $_GET['cid'];
 }
 ?>
-<div class="titre">Ajouter un categorie </div>
+<div class="titre" style ="   width: 21%;
+    position: relative;
+    right: -40%;
+    bottom: -25%;
+	margin-top: 15%; "> 
+	<h4><b>Ajouter un categorie </b></h4>
             <form action="ajout_cat.php" method="post">
-                <table>
-                    <tr>
-                        <td><label for="inputNom" class="control-label">Nom</label></td>
-                            <td><input type="text" name="nom" class="form-control" id="inputNom" placeholder="nom" required value="<?= $data['nom']??""?>"></td>
-                    </tr>   
-                </table>
-        <div class="form-group">
-         <button type="submit" class="btn btn-primary">Valider</button>
-                    </div>
+    <label for="inputNom" class="control-label">Nom</label>
+    <input type="text" name="nom" size="20" class="form-control" id="inputNom" required placeholder="nom"
+                                   required value="<?= $data['login']??"" ?>">
+   
+                  
+    <div class="form-group">
+		<button type="submit" class="btn btn-primary" style="margin-top:4%;">Valider</button>
+               
+				</div>
                 </form>
-<?php include"../footer.php" ?>
+				</div>
+<?php include("../footer.php"); ?>

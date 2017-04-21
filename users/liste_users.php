@@ -2,10 +2,9 @@
 $page_title ="Liste  utilisateur";
 include("../header.php");
 include("user.php");
-// mettre un fond vert pour les admis et un fond bleu pour les utilisateur 
-//echo $idm->getIdentity();
+
 require("../db_config.php");
-//mettre un message quand le login est deja pris
+
 try {
 $db= new PDO("mysql:hostname=$hostname;dbname=$dbname",$username);
 $db->setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -14,9 +13,10 @@ $res =$db->query($SQL);
 if ($res->rowCount()==0){
     echo "<P>La liste est vide";
 	?>
-<td><a href='ajout_form_user.php?uid=<?php echo $row['uid'] ?>'>Ajouter une Utilisateur en plus </a></td>
+<div class="ajouter" title="Ajouter une personne"><a class="a" href='ajout_form_user.php?uid=<?php echo $row['uid'] ?>'>Ajouter un utilisateur</a></div>
+
         <?php
-}else {
+} else {
     ?>    
 <table>
      <style> table { border-collapse: collapse }
@@ -41,7 +41,7 @@ while($row=$res->fetch()) {
 echo "</table>\n";
     ?>
 	</table>
-    <td><a href='ajout_form_user.php?uid=<?php echo $row['uid'] ?>'>Ajouter une Utilisateur en plus </a></td>
+    <div class="ajouter" title="Ajouter une personne"><a class="a" href='ajout_form_user.php?uid=<?php echo $row['uid'] ?>'>Ajouter un utilisateur</a></div>
         <?php
 $db=null;
      };

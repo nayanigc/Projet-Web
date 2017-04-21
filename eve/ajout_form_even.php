@@ -1,4 +1,5 @@
 <?php 
+include('../header.php');
 if(!isset($_GET['eid']) ){
     include("liste_even.php");
 } else {
@@ -16,54 +17,40 @@ if(!isset($_GET['eid']) ){
 }
 
 ?>
-
-<div class="titre"> <h4>Ajouter un evenement </h4></div>
-            <form action="ajout_even.php?eid=<?php echo $eid ?>" method="post">
-                <table>
-                        
-<label for="inputNomType" class="control-label">Categories</label>
-        <tr>
-                        <select class="form-control" name="cid">
-                                <p>
-                                    <?php
-                                        while($row=$res->fetch()){
-                                            echo "<option value=".$row['cid'].">".$row['nom']."</option><br/>";
+<link rel="stylesheet" href="style.css">
+<div class="titre"> <h4><b>Ajouter un evenement</b></h4>
+      <form action="ajout_even.php?eid=<?php echo $eid ?>" method="post">
+		 <div id="inlineClass">
+		  <div class="cat-inline"><label for="inputNomType" class="control-label">Categories</label>
+               <div id="form-select"><select class="form-control"  name="cid">
+                   <?php
+                        while($row=$res->fetch()){
+                        echo "<option value=".$row['cid'].">".$row['nom']."</option><br/>";
                                         }
-                                    ?>
-                                </p>
-                        </select>
-              </tr>   
-                   <tr>
-            
-    <td><label for="inputIntitule" class="control-label">Intitule</label></td>
-    <td><input type="text" name="intitule" class="form-control" id="inputIntitule" placeholder="intitule" required value="<?= $data['intitule']??""?>"></td>
+                    ?>
+                </select></div>
+			  </div>
+		  <div class="intitu"><label for="inputIntitule" class="control-label">Intitule</label>
+    	  <input type="text" name="intitule" class="form-control form-input" id="inputIntitule" placeholder="intitule..." required value="<?= $data['intitule']??""?>"></div>
+		 </div>
                         
-     <td><label for="inputDescription" class="control-label">description</label></td>
- <td><input type="text" name="description" class="form-control" id="inputDescription" placeholder="description" required value="<?= $data['description']??""?>"></td>
-  
+     	  <div><label for="inputDescription" class="control-label">Description</label>
+		  <textarea rows="5" type="text" name="description" class="form-control" id="inputDescription" placeholder="description..." required value="<?= $data['description']??""?>"></textarea></div>
+  <div class="inline-element-root">
                         
-     <td><label for="inputDatedebut" class="control-label">Date de debut </label></td>
-    <td><input type="date" name="datedebut" class="form-control" id="inputDatedebut" placeholder="datedebut" required value="<?= $data['datedebut']??""?>"></td>
-                        
-    <td><label for="inputDateFin" class="control-label">datefin</label></td>
-    <td><input type="date" name="datefin" class="form-control" id="inputDateFin" placeholder="datefin" required value="<?= $data['datefin']??""?>"></td>
-                      </tr>
-     <label for="inputNomType" class="control-label">Type</label>
-        <tr>
-                        <select name="type">
-                                <p>
-                                    <?php
-                                            echo "<option>Ouvert</option><br/>";
-                                             echo "<option>Ferme</option><br/>";
-                                    ?>
-                                </p>
-                        </select>
-              </tr>   
-                </table>
-        <div class="form-group">
-         <button type="submit" class="btn btn-primary">Valider</button>
-                    </div>
-                </form>
+    <p class="inline-element"><label for="inputDatedebut" class="control-label">Date de debut </label>
+    <input type="date" name="datedebut" class="form-control" id="inputDatedebut" placeholder="datedebut" required value="<?= $data['datedebut']??""?>"></p>
+    <p class="inline-element1"><label for="inputDateFin" class="control-label">Date de fin</label>
+    <input type="date" name="datefin" class="form-control" id="inputDateFin" placeholder="datefin" required value="<?= $data['datefin']??""?>"></p>
+     <p class="inline-element2"><label for="inputNomType" class="control-label">Type</label>
+     <select class="form-control" name="type">
+		<option>Ouvert</option>
+        <option>Ferme</option>
+     </select></p>
+	</div>
+     <button type="submit" class="btn btn-primary">Valider</button>
+  </form>
+</div>
 <?php
 include("../footer.php");
 ?>

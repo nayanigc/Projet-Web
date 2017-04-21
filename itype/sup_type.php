@@ -28,5 +28,6 @@ if (!isset($_GET['tid'])){
     }
 }
 echo "<a href='../home.php'>Revenir</a> à la page d'accueil";
+echo "</div>";
 include("../footer.php");
 ?>

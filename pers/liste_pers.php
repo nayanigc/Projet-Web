@@ -2,22 +2,18 @@
 $page_title ="Liste personne";
 include("../header.php");
 include("pers.php");
-//include("mise_en_page.php");
-// mettre un fond vert pour les admis et un fond bleu pour les utilisateur //
-//echo $idm->getIdentity();
-
 require("../db_config.php");
 try {
 $db= new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
 $db->setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-$SQL="SELECT * FROM personnes";
+$SQL="SELECT * FROM personnes ORDER BY nom ";
 $res =$db->query($SQL); 
 
    
 if ($res->rowCount()==0){
     echo "<P>La liste est vide";
 ?>
-<td><a href='ajout_form_pers.php?pid=<?php echo $row['pid'] ?>'>Ajouter</a></td>
+<div class="ajouter" title="Ajouter une personne"><a class="a" href='ajout_form_pers.php?pid=<?php echo $row['pid'] ?>'>Ajouter</a></div>
 
 <?php
 }else {

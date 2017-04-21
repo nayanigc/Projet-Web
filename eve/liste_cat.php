@@ -14,7 +14,7 @@ $res =$db->query($SQL);
 if ($res->rowCount()==0){
     echo "<P>La liste est vide";
 ?>
-   <td><a href='ajout_form_cat.php?cid=<?php echo $row['cid'] ?>'>Ajouter une categorie </a></td>
+<div class="ajouter" title="Ajouter une personne"><a class="a" href='ajout_form_cat.php?cid=<?php echo $row['cid'] ?>'>Ajouter une categorie</a></div>
 
 <?php
 }else {
@@ -43,7 +43,7 @@ while($row=$res->fetch() ) {
  };  
 echo "</table>\n";
     ?>
-         <td><a href='ajout_form_cat.php?cid=<?php echo $row['cid'] ?>'>Ajouter une categories</a></td>
+      <div class="ajouter" title="Ajouter une personne"><a class="a" href='ajout_form_cat.php?cid=<?php echo $row['cid'] ?>'>Ajouter une categorie</a></div>
      
     <?php
 $db=null;

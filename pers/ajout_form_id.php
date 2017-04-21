@@ -16,39 +16,16 @@ if(!isset($_GET['pid']) ){
 }
 ?>
 
-<div class="titre"> <h4>Ajouter un autre moyen identification </h4></div>
-<!--<form class="form-horizontal" action="ajout_id.php?pid=<?php echo $pid ?>" method="post">
-  <div class="form-group">
-    <label class="control-label col-sm-2" for="iden">identification :</label>
-    <div class="col-sm-10">
-      <select class="form-control" id="iden" name="tid">
-             <?php
-                 /*while($row=$res->fetch()){
-                    echo "<option value=".$row['tid'].">".$row['nom']."</option><br/>";
-                 }*/
-             ?>
-        </select>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="control-label col-sm-2" for="pwd">Valeur :</label>
-    <div class="col-sm-10"> 
-      <input name="valeur" type="text" class="form-control" id="inputValeur" placeholder="Valeur..." required value="<?= $data['valeur']??""?>">
-    </div>
-  </div>
-  <div class="form-group"> 
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Submit</button>
-    </div>
-  </div>
-</form>!-->
+<div class="titre" style="
+	width: 21%;
+    position: relative;
+    right: -40%;
+    bottom: -25%;
+						  "> 
+	<h4><b>Ajouter un autre moyen identification </b></h4>
+<form class="form-group" action="ajout_id.php?pid=<?php echo $pid ?>" method="post"> 
 
-
-
-
-<form class="form-horizontal" action="ajout_id.php?pid=<?php echo $pid ?>" method="post"> 
-	<div class="form-group">
-       	<label for="inputNomType" class="control-label">identification</label>
+<label for="inputNomType" class="control-label">identification</label>
         <select class="form-control" name="tid">
              <?php
                  while($row=$res->fetch()){
@@ -56,11 +33,11 @@ if(!isset($_GET['pid']) ){
                  }
              ?>
         </select> 
-	</div>
-        <label for="inputValeur" class="control-label">Valeur</label>
-        <input type="text" name="valeur" class="form-control" id="inputValeur" placeholder="valeur" required value="<?= $data['valeur']??""?>">
-        <button type="submit" class="btn btn-primary">Valider</button>
+ <label for="inputValeur" class="control-label">Valeur</label>
+ <input type="text" name="valeur" class="form-control" id="inputValeur" placeholder="valeur" required value="<?= $data['valeur']??""?>">
+ <button type="submit" style="margin-top: 4%;" class="btn btn-primary">Valider</button>
 </form>
+</div>
 
 <?php
 include("../footer.php");
