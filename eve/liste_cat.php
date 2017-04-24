@@ -1,6 +1,7 @@
 <?php 
 $page_title ="Liste  personne";
 include("../header.php");
+include("navbar2.php");
 include("cat.php");
 
 require("../db_config.php");
@@ -14,7 +15,7 @@ $res =$db->query($SQL);
 if ($res->rowCount()==0){
     echo "<P>La liste est vide";
 ?>
-<div class="ajouter" title="Ajouter une personne"><a class="a" href='ajout_form_cat.php?cid=<?php echo $row['cid'] ?>'>Ajouter une categorie</a></div>
+<div class="ajouter" title="Ajouter une personne"><a class="a" href='ajout_form_cat.php'>Ajouter une categorie</a></div>
 
 <?php
 }else {
@@ -43,7 +44,7 @@ while($row=$res->fetch() ) {
  };  
 echo "</table>\n";
     ?>
-      <div class="ajouter" title="Ajouter une personne"><a class="a" href='ajout_form_cat.php?cid=<?php echo $row['cid'] ?>'>Ajouter une categorie</a></div>
+      <div class="ajouter" title="Ajouter une personne"><a class="a" href='ajout_form_cat.php'>Ajouter une categorie</a></div>
      
     <?php
 $db=null;

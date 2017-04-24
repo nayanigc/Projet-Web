@@ -1,25 +1,20 @@
 <?php 
 include('../header.php');
-if(!isset($_GET['eid']) ){
-    include("liste_even.php");
-} else {
-    $eid = $_GET['eid'];
-    require("../db_config.php");
-    try{
-        $db=new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
-        $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $SQL="SELECT * FROM categories";
-        $res = $db->query($SQL);
-        $db=null;
-     }catch (PDOException $e){
-         echo "Erreur SQL: ".$e->getMessage();
-    } 
-}
+require("../db_config.php");
+try{
+	$db=new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
+	$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+	$SQL="SELECT * FROM categories";
+	$res = $db->query($SQL);
+	$db=null;
+ }catch (PDOException $e){
+	 echo "Erreur SQL: ".$e->getMessage();
+} 
 
 ?>
 <link rel="stylesheet" href="style.css">
 <div class="titre"> <h4><b>Ajouter un evenement</b></h4>
-      <form action="ajout_even.php?eid=<?php echo $eid ?>" method="post">
+      <form action="ajout_even.php" method="post">
 		 <div id="inlineClass">
 		  <div class="cat-inline"><label for="inputNomType" class="control-label">Categories</label>
                <div id="form-select"><select class="form-control"  name="cid">

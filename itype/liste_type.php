@@ -1,7 +1,7 @@
-
 <?php
 $page_title ="Liste type";
 include("../header.php");
+include("navbar.php");
 include("type.php");
 require("../db_config.php");
 try{
@@ -13,7 +13,7 @@ try{
         if ($res->rowCount()==0){
         echo"<p>La liste est vide";
             ?>
-<div class="ajouter" title="Ajouter une type"><a class="a" href='ajout_form_type.php?tid=<?php echo $row['tid'] ?>'>Ajouter</a></div>
+<div class="ajouter" title="Ajouter une type"><a class="a" href='ajout_form_type.php'>Ajouter</a></div>
         
         <?php
     }else{
@@ -22,6 +22,7 @@ try{
     <style>
 		table {border-collapse: collapse}
         td,th {border: 1px solid black}
+		body{background-color:#d6cbe2 }
     </style>
 	
 	<table class="table table-striped">

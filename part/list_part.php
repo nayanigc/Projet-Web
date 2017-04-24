@@ -1,6 +1,7 @@
 <?php
 $page_title ="Liste d'evenement";
 include("../header.php");
+include("navbar.php");
 include("part.php");
 require("../db_config.php");
 try{

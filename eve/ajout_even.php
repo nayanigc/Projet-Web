@@ -4,13 +4,13 @@ $page_titre="Ajouter un evenement";
 include("../header.php");
 
 if(!isset($_POST['intitule'])){
-echo"titre";
+	echo"titre";
 }
 if(!isset($_POST['description'])){
-echo"descripteur";
+	echo"descripteur";
 }
 if(!isset($_POST['cid'])){
-echo"cid";
+	echo"cid";
 }
 else {
 $cid = $_POST['cid'];

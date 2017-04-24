@@ -1,7 +1,8 @@
 body{
-    background-image: url('../per.jpg');
+	background-color: #d6cbe2;
     background-repeat: no-repeat;
     background-attachment: fixed;
+	
 }
 
 .logo{
@@ -31,7 +32,7 @@ body{
 }
 
 .h2{
-      text-align: left;
+      text-align: 30%;
 }
 .element1{
     margin :inherit;
@@ -51,8 +52,8 @@ body{
 .ajouter{
     margin-left: 90%;
     text-decoration: underline;
-    background: #4267b2;
-    border-color: #29487d;
+    background: #796891;
+    border-color: #6f5f80;
     color: white;
     padding: 5px;
     text-align: center;

@@ -1,0 +1,4 @@
+
+a.droite {
+    margin-left: 1172px;
+}

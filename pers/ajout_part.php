@@ -8,7 +8,6 @@ if(!isset($_POST['date'])){
   
 if(!isset($_GET['pid'])){
     echo "PID"; 
-    //include("ajout_form_id.php");
 } else {
     $pid = $_GET['pid'];
     $eid = $_POST['eid'];

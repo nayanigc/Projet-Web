@@ -1,8 +1,8 @@
-
 <?php 
-
+//include("navbar2.php");
 $page_title ="Information personnel";
 include("../header.php");
+include("navbar3.php");
 include("info_per.php");
 require("../db_config.php");
 
@@ -139,7 +139,10 @@ if ($st->rowCount()==0){
 	
 <table>
      <style> table { border-collapse: collapse }
-        td,th  {border: 1px solid black} </style>
+        td,th  {border: 1px solid black}
+		html{
+		background-color: #d6cbe2;
+	}</style>
 	<table class="table table-striped">
 	<thead>
 		<th>users</th>

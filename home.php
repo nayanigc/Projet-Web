@@ -2,20 +2,21 @@
 
 require("auth/EtreAuthentifie.php");
 
-$title = 'Accueil'; 
+$title = 'Accueil';
 include("header.php");
 
 $_SESSION['uid'] = $idm->getUid();
 
-include("mise_en_page2.php");
 
 if($idm->getRole() == 'user'){
-	?>
-	<a href="pointage/even_pointage.php?uid= $idm->getUid()">connexion vers pointage</a>;
-<?php
+include("header1.php");
+	include("mise_en_page2.php");	
+	include("pointage/even_pointage.php");
 }
 	
 if ($idm->getRole() == 'admin'){
+	include("header2.php");
+	include("mise_en_page2.php");
     include("mise_en_page.php");
 
 }

@@ -13,9 +13,6 @@ if(!isset($_POST['nom'])){
 if ($nom=="") {  
     include("liste_cat.php");
 } else {
-?>
-
-<?php
  require("../db_config.php");
     try{
         $db=new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);

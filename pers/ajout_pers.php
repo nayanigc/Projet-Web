@@ -4,7 +4,7 @@ session_start();
 $page_title="Ajouter une personne";
 include("../header.php");
 
-if((!isset($_POST['nom']))||(!isset($_POST['prenom']))){
+if((!isset($_POST['nom'])) || (!isset($_POST['prenom'])) || $_POST['nom'] === "" || $_POST['prenom'] === ""){
     include("liste_pers.php");
 }else{
     $nom=$_POST['nom'];

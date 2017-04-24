@@ -1,10 +1,4 @@
-<?php
-include("../header.php");
-if(!isset($_GET['tid'])){
-    echo "Erreur: uid non défini";
-    echo "UID : " . $_GET['uid'];
-}
-?>
+
 <div class="titre" style ="   width: 21%;
     position: relative;
     right: -40%;

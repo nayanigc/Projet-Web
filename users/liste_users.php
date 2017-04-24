@@ -1,8 +1,8 @@
 <?php 
 $page_title ="Liste  utilisateur";
 include("../header.php");
+include("navbar.php");
 include("user.php");
-
 require("../db_config.php");
 
 try {

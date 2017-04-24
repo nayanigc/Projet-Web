@@ -1,10 +1,4 @@
-<?php
-include("../header.php");
-if(!isset($_GET['cid'])){
-    echo "Erreur: cid non défini";
-    echo "CID : " . $_GET['cid'];
-}
-?>
+
 <div class="titre" style ="   width: 21%;
     position: relative;
     right: -40%;
@@ -14,7 +8,7 @@ if(!isset($_GET['cid'])){
             <form action="ajout_cat.php" method="post">
     <label for="inputNom" class="control-label">Nom</label>
     <input type="text" name="nom" size="20" class="form-control" id="inputNom" required placeholder="nom"
-                                   required value="<?= $data['login']??"" ?>">
+                                   required value="<?= $data['nom']??"" ?>">
    
                   
     <div class="form-group">
