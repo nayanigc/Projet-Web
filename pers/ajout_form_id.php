@@ -1,4 +1,7 @@
 <?php 
+session_start();
+include("../header.php");
+
 if(!isset($_GET['pid']) ){
     include("info_pers.php");
 } else {

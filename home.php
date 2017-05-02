@@ -7,15 +7,15 @@ include("header.php");
 
 $_SESSION['uid'] = $idm->getUid();
 
-
+	
 if($idm->getRole() == 'user'){
-include("header1.php");
+	include("navbar.php");
 	include("mise_en_page2.php");	
-	include("pointage/even_pointage.php");
+	include("pointage/even_pointage.php"); //?uid=$_SESSION[uid]
 }
 	
 if ($idm->getRole() == 'admin'){
-	include("header2.php");
+	include("navbar2.php");
 	include("mise_en_page2.php");
     include("mise_en_page.php");
 

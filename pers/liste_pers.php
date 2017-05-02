@@ -19,14 +19,7 @@ if ($res->rowCount()==0){
 <?php
 }else {
     ?> 
-<style> 
-	table { border-collapse: collapse }
- 	td,th  {border: 1px solid black} 
 
-	/*html{
-		background-color: #d6cbe2;
-	}*/
-</style>
 <table class="table table-striped">
 	<thead>
 		<th>Nom</th>

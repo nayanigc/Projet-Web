@@ -1,4 +1,5 @@
 <html>
+	<link rel="stylesheet" href="bootstrap.css"/>
 	<link rel="stylesheet" href="styles.css"/>
 
    <header class="headerPage">

@@ -19,6 +19,8 @@ form {
 	background-color: rgba(0,0,0,0);
 	border-color: rgba(0,0,0,0);
 }
+
+
 .form-control{
 	width: 25% !important;
 }
@@ -42,9 +44,10 @@ a{
 .col-lg-2{
 	margin-top: 2%;
 }
+
+
 .center { text-align: center }
 .center table {margin-left:auto; margin-right:auto;}
 .left {text-align: right}
 .right {text-align: left}
-body {background-color: url ("home.jpg")}
 .error {color: red;}

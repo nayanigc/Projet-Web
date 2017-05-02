@@ -1,3 +1,4 @@
+<?php include("../header.php"); ?>
 
 <div class="titre" style ="   width: 21%;
     position: relative;

@@ -1,4 +1,5 @@
 <?php 
+session_start();
 //include("navbar2.php");
 $page_title ="Information personnel";
 include("../header.php");
@@ -151,7 +152,7 @@ if ($st->rowCount()==0){
 		<th>Date de Debut</th>
 		<th>Date de Fin</th>
 		<th>Type</th>
-		<th>Date</th>
+		
 	</thead>
 <?php
 while($row=$st->fetch()) {
@@ -164,8 +165,6 @@ while($row=$st->fetch()) {
 	<td> <?php echo htmlspecialchars($row['dateDebut'])?></td>
 	<td><?php echo htmlspecialchars($row['dateFin'])?></td>
 	<td><?php echo htmlspecialchars($row['type'])?></td>
-	<td><?php echo htmlspecialchars($row['date'])?></td>
-	</tr>
 <?php
  };
 ?>

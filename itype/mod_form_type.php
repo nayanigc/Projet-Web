@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../header.php");
 if(!isset($_GET['tid'])){
     echo "Erreur: tid non défini";

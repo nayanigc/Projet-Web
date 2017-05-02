@@ -1,4 +1,8 @@
-        <div class="titre" style="
+<?php 
+session_start();
+?>
+
+<div class="titre" style="
 	width: 21%;
     position: relative;
     right: -40%;

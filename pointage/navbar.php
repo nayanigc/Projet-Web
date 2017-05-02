@@ -1,7 +1,7 @@
 <?php
 require("../auth/EtreAuthentifie.php");
 ?>
-<link rel="stylesheet" href="../bootstrap"/>
+<link rel="stylesheet" href="style.css"/>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -19,17 +19,7 @@ require("../auth/EtreAuthentifie.php");
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="../home.php">Home<span class="sr-only">(current)</span></a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Liste<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-          <li> <a href="../part/list_part.php"s>Participation</a></li>
-            <li><a href="../itype/liste_type.php">Type</a></li>
-            <li><a href="../users/liste_users.php">Utilisateur</a></li>  <li><a href="../pers/liste_pers.php">Personne</a></li>
-            <li><a href="../eve/liste_even.php">Evenement</a></li>
-          </ul>
-        </li>
        <ul class="nav navbar-nav navbar-right">
-		   
 		<li><a href="<?= $pathFor['logout'] ?>" class="droite">Logout</a></li>
 		  </ul>
 		</ul>

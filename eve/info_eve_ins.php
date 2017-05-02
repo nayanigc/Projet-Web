@@ -2,7 +2,7 @@
 
 $page_title ="Information pour chaque evemenent";
 include("../header.php");
-include("navbar3.php");
+include("navbar2.php");
 include("info_even.php");
 require("../db_config.php");
 
