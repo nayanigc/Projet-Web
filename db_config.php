@@ -1,7 +1,7 @@
 <?php
 
 $hostname = "localhost";
-$dbname = "projet";
+$dbname = "2017_projet7_participations";
 $username = "root";
 $password = "";
 

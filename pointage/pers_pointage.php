@@ -8,11 +8,11 @@ include("navbar.php");
 $eid = $_GET['eid'];  
 $uid= $_SESSION['uid'];
 //$date= date("d-m-Y H:i:s");
-//$pid= $_POST['pid'];
+//$type= $_POST['type'];
 try {
 $db= new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
 $db->setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-$SQL="SELECT nom, prenom, personnes.pid as ppid FROM inscriptions INNER JOIN users ON inscriptions.uid=users.uid INNER JOIN personnes ON inscriptions.pid = personnes.pid INNER JOIN evenements ON inscriptions.eid = evenements.eid INNER JOIN identifications ON identifications.pid=inscriptions.pid WHERE inscriptions.eid=?";
+$SQL="SELECT nom, prenom, personnes.pid as ppid ,evenements.type as type FROM inscriptions INNER JOIN users ON inscriptions.uid=users.uid INNER JOIN personnes ON inscriptions.pid = personnes.pid INNER JOIN evenements ON inscriptions.eid = evenements.eid INNER JOIN identifications ON identifications.pid=inscriptions.pid WHERE inscriptions.eid=?";
 $st = $db->prepare($SQL);
 $res = $st->execute(array($eid));
 	
@@ -68,7 +68,11 @@ while($row=$st->fetch()) {
 
 <input class="btn btn-primary" type="submit" value="Soumission batch" />
 </form>
+
 <?php
+	if ($type=="ferme"){
+		echo"<h3>vous ne pouvez pas ajouter de personnes<h3>";
+	}else{
 	try{
         $db=new PDO("mysql:hostname=$hostname;dbname=$dbname",$username);
         $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -124,6 +128,7 @@ while($row=$st->fetch()) {
 <?php
 $db=null;
      };
+	}
 }catch (PDOException $e){
   echo "Erreur SQL: ".$e->getMessage();
 }

@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 //include("navbar2.php");
 $page_title ="Information personnel";
 include("../header.php");
