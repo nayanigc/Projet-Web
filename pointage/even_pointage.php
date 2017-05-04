@@ -1,8 +1,6 @@
 <?php
 include("header.php");
 
-echo $_SESSION['uid'];
-
 require("db_config.php");
 try{
     $db= new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);

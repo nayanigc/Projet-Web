@@ -17,11 +17,10 @@ if(!isset($_GET['pid'])){
     $SQL ="SELECT nom,prenom FROM personnes WHERE pid =:pid";
         $st=$db->prepare($SQL);
         $pid= $_GET["pid"];
-    $st->query($SQL);
+  $st->execute(['pid'=>$pid]);
     if ($st->rowCount() == 0){
         echo"<p> Erreur dans pid </p>\n";
     }else{
-           echo "salut";
            $SQL="UPDATE personnes SET nom=?,prenom=? WHERE pid=?";
             $st = $db->prepare($SQL);
             $res = $st->execute(array($nom,$prenom,$pid));
@@ -35,6 +34,6 @@ if(!isset($_GET['pid'])){
     echo "Erreur SQL: ".$e->getMessage();
     }
 }
-echo "<a href='../home.php'>Revenir</a> à la page d'accueil";
+echo "<a href='list_pers.php'>Revenir</a> à la liste des personnes";
 include("../footer.php");
 ?>

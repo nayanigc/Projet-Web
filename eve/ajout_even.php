@@ -30,7 +30,7 @@ $type = $_POST['type'];
     $st=$db->prepare($SQL);
    $res = $st->execute(array($intitule,$description,$dateDebut,$dateFin,$type,$cid));
    echo"L'ajout a été effectué";
-   echo "<a href='../home.php'>Revenir</a> à la page de gestion";
+   echo "<a href='liste_even.php'>Revenir</a> à la liste des événements";
 
             $db=null;
        

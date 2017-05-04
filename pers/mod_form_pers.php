@@ -28,7 +28,7 @@ if(!isset($_GET['pid'])){
 		margin-left: 5%;
 	}
 </style>
-	<h4><b>Modifie le mot  de passe</b></h4>
+	<h4><b>Modifie le nom</b></h4>
 	<form class="form-group" action="mod_pers.php?pid=<?php echo $_GET['pid'] ?>" method="post">
 		<label for="inputNom" class="control-label">Nom</label>
 		<input type="text" name="nom" class="form-control" id="inputNom" placeholder="nom" required value="<?= $data['nom']??""?>">

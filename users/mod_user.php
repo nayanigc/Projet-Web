@@ -38,6 +38,6 @@ $db=null;
 echo "Erreur SQL: ".$e->getMessage();
 }
 }
-echo "<a href='../home.php'>Revenir</a> à la page d'accueil";
+echo "<a href='liste_users.php'>Revenir</a> à la liste des users";
 include("../footer.php");
 ?>

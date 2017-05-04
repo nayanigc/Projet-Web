@@ -32,7 +32,7 @@ if ($nom=="") {
  if (!$res) 
    echo "Erreur d’ajout";
    else echo "L'ajout a été effectué";
-echo "<a href='../home.php'>Revenir</a> à la page de gestion";
+   echo "<a href='liste_cat.php'>Revenir</a> à la liste des catégories";
 
  $db=null;
 }catch (PDOException $e){

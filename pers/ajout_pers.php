@@ -28,7 +28,7 @@ if (($nom=="") || ($prenom=="")) {
  if (!$res) 
    echo "Erreur d’ajout";
    else echo "L'ajout a été effectué";
-echo "<a href='../home.php'>Revenir</a> à la page de gestion";
+echo "<a href='liste_pers.php'>Revenir</a> à la page de gestion";
 
  $db=null;
 }catch (PDOException $e){

@@ -6,7 +6,7 @@ include("type.php");
 require("../db_config.php");
 try{
     
-    $db = new PDO("mysql:hostname=$hostname;dbname=$dbname",$username);
+    $db = new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
     $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     $SQL="SELECT * FROM itypes";
     $res =$db->query($SQL);

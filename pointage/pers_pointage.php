@@ -7,19 +7,23 @@ include("navbar.php");
 
 $eid = $_GET['eid'];  
 $uid= $_SESSION['uid'];
-//$date= date("d-m-Y H:i:s");
-//$type= $_POST['type'];
 try {
+	$type="";
 $db= new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
 $db->setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-$SQL="SELECT nom, prenom, personnes.pid as ppid ,evenements.type as type FROM inscriptions INNER JOIN users ON inscriptions.uid=users.uid INNER JOIN personnes ON inscriptions.pid = personnes.pid INNER JOIN evenements ON inscriptions.eid = evenements.eid INNER JOIN identifications ON identifications.pid=inscriptions.pid WHERE inscriptions.eid=?";
+$SQL="SELECT nom, prenom, personnes.pid as ppid ,evenements.type as type, evenements.intitule as intitule FROM inscriptions INNER JOIN users ON inscriptions.uid=users.uid INNER JOIN personnes ON inscriptions.pid = personnes.pid INNER JOIN evenements ON inscriptions.eid = evenements.eid INNER JOIN identifications ON identifications.pid=inscriptions.pid WHERE inscriptions.eid=?";
 $st = $db->prepare($SQL);
 $res = $st->execute(array($eid));
 	
 if ($st->rowCount()==0){
     echo "<P>La liste est vide"; 
 }else {
-    ?>  
+	$row = $st->fetch();
+	$event_name = $row['intitule'];
+	
+    ?> 
+	<h2  class="titre" style="margin-left: 40%;"><?php echo $row['intitule'] ?></h2>
+	<br />
      <style> table { border-collapse: collapse }
         td,th  {border: 1px solid black} </style>
 	<table class="table table-striped">
@@ -30,10 +34,37 @@ if ($st->rowCount()==0){
 		<th>Pointage</th>
 		<th>Soumission batch</th>
 	</thead>
+		<tr>
+   <td><?php echo htmlspecialchars($row['nom'])?></td>
+   <td><?php echo htmlspecialchars($row['prenom'])?></td>
+	 <td><select>
+		 <?php 
+			$SQL1 = "SELECT identifications.pid as pidI, itypes.nom as nom, valeur, identifications.tid as Itid
+			FROM identifications
+			RIGHT JOIN personnes ON identifications.pid = personnes.pid
+			LEFT JOIN itypes ON identifications.tid = itypes.tid WHERE identifications.pid=?";
+						  
+			$req = $db->prepare($SQL1);
+    		$res = $req->execute(array($row['ppid']));
+						  
+			while ($row1=$req->fetch()) { 
+				echo"<option value=".$row1['Itid'].">".$row1['nom']." ".$row1['valeur']."</option> </br>" ; 
+			} 
+		 ?>
+		 </select>
+	 </td>
+	 <td>
+		 <a href='pointage.php?pid=<?php echo "$row[ppid]";?>&amp;eid=<?php echo "$eid";?>&amp;uid=<?php echo "$uid";?>' class='btn btn-info'>Pointer</a>
+	 </td>
+	 <td>
+	 	<form method="post" action='bash.php?pid=<?php echo "$row[ppid]";?>&amp;eid=<?php echo "$eid";?>&amp;uid=<?php echo "$uid";?>'>
+		 	<input type="checkbox" name="checkbox[]" value="<?php echo $row['ppid']; ?>"/>
+	 </td>
+</tr>
 <?php
 while($row=$st->fetch()) {
+$type=$row['type'];
 ?>
-
  <tr>
    <td><?php echo htmlspecialchars($row['nom'])?></td>
    <td><?php echo htmlspecialchars($row['prenom'])?></td>
@@ -66,7 +97,7 @@ while($row=$st->fetch()) {
 ?>
 </table>
 
-<input class="btn btn-primary" type="submit" value="Soumission batch" />
+<input class="btn btn-primary" style="margin-left: 80%;" type="submit" value="Soumission batch" />
 </form>
 
 <?php
@@ -74,7 +105,7 @@ while($row=$st->fetch()) {
 		echo"<h3>vous ne pouvez pas ajouter de personnes<h3>";
 	}else{
 	try{
-        $db=new PDO("mysql:hostname=$hostname;dbname=$dbname",$username);
+        $db=new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
         $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $SQL="SELECT * FROM itypes";
         $res = $db->query($SQL);

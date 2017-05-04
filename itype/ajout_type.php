@@ -16,25 +16,24 @@ if ($nom=="") {
 
  require("../db_config.php");
     try{
-        $db=new PDO("mysql:hostname=$hostname;dbname=$dbname",$username);
+        $db=new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
         $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $SQL="SELECT nom FROM itypes WHERE nom =?";
         $st = $db->prepare($SQL);
         $res = $st->execute(array($nom));
         if ($st->rowCount()==0){
-            echo $st->rowCount();
             $SQL = "INSERT INTO itypes  VALUES (DEFAULT,?)";
             $st = $db->prepare($SQL);
             $res = $st->execute(array($nom));
+
+			if (!$res){ 
+			   echo "Erreur d’ajout";
+			 } else{
+				 echo "L'ajout a été effectué";
+			 } 
         }else {
           echo $nom." existe deja";
         }
-
- if (!$res){ 
-   echo "Erreur d’ajout";
- } else{
-     echo "L'ajout a été effectué";
- } 
 echo "<a href='../home.php'>Revenir</a> à la page de gestion";
 
  $db=null;

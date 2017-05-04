@@ -27,6 +27,6 @@ if (!isset($_GET['pid'])){
         echo "Erreur SQL:".$e->getMessage();
     }
 }
-echo "<a href='../home.php'>Revenir</a> à la page d'accueil</div>";
+echo "<a href='liste_pers.php'>Revenir</a> à la liste des personnes</div>";
 include("../footer.php");
 ?>

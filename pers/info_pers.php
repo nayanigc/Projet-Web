@@ -9,7 +9,7 @@ require("../db_config.php");
 
 $pid = $_GET['pid'];    
 try {
-$db= new PDO("mysql:hostname=$hostname;dbname=$dbname",$username);
+$db= new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
 $db->setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 $SQL="SELECT personnes.nom as nomPersonne, prenom, itypes.nom as nomType, valeur,itypes.tid as tid
         FROM identifications
@@ -20,9 +20,10 @@ $SQL="SELECT personnes.nom as nomPersonne, prenom, itypes.nom as nomType, valeur
         $st = $db->prepare($SQL);
         $res = $st->execute(array($pid));
 if ($st->rowCount()==0){
-    echo "<P>La liste est vide"; 
+    echo "La liste des identificatons est vide"; 
     ?>
-      <td><a href='ajout_form_id.php?pid=<?php echo $pid ?>'>Ajouter  </a></td>
+		<br />
+      <a href='ajout_form_id.php?pid=<?php echo $pid ?>'>Ajouter un type</a>
     <?php
 }else {
     ?>  
@@ -30,6 +31,8 @@ if ($st->rowCount()==0){
 <div class="titre"><h1><?php echo $_POST['nom']." ".$_POST['prenom'] ?></h1></div>
 
 <div>
+	<br />
+	<div class="titre"><h2>Liste des identifications</h2></div>
      <style> table { border-collapse: collapse }
         td,th  {border: 1px solid black} </style>
 	<table class="table table-striped">
@@ -55,7 +58,7 @@ while($row=$st->fetch()) {
  };  
 ?>
 	</table>
-	<div class="ajouter"><a class="a" href='ajout_form_id.php?pid=<?php echo $pid ?>' title="Ajouter une nouvelle personne">Ajouter</a></div>
+	<div class="ajouter"><a class="a" href='ajout_form_id.php?pid=<?php echo $pid ?>' title="Ajouter un type">Ajouter un type</a></div>
 </div>
 <?php
     
@@ -69,7 +72,7 @@ $db=null;
 	 
 
 try {
-$db= new PDO("mysql:hostname=$hostname;dbname=$dbname",$username);
+$db= new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
 $db->setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 $SQL="SELECT * FROM
        participations INNER JOIN users on participations.uid=users.uid INNER JOIN personnes ON participations.pid = personnes.pid INNER JOIN evenements  on participations.eid = evenements.eid
@@ -81,6 +84,8 @@ if ($st->rowCount()==0){
     echo "<P>La liste est vide"; 
 }else {
     ?>  
+	<br />
+	<div class="titre"><h2>Liste des participations</h2></div>
 	
 <table>
      <style> table { border-collapse: collapse }
@@ -123,7 +128,7 @@ $db=null;
 
 
 try {
-$db= new PDO("mysql:hostname=$hostname;dbname=$dbname",$username);
+$db= new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
 $db->setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 $SQL="	SELECT * FROM inscriptions INNER JOIN users on inscriptions.uid=users.uid INNER JOIN personnes ON inscriptions.pid = personnes.pid INNER JOIN evenements  on inscriptions.eid = evenements.eid
 		WHERE personnes.pid=?
@@ -134,10 +139,11 @@ $SQL="	SELECT * FROM inscriptions INNER JOIN users on inscriptions.uid=users.uid
         $st = $db->prepare($SQL);
         $res = $st->execute(array($pid, $pid));
 if ($st->rowCount()==0){
-    echo "<P>La liste est vide"; 
+    echo "La liste inscriptions sans participation est vide"; 
 }else {
     ?>  
 	
+	<div class="titre"><h2>Liste des inscription sans participation</h2></div>
 <table>
      <style> table { border-collapse: collapse }
         td,th  {border: 1px solid black}

@@ -19,7 +19,7 @@ if ($login=="") {
 
  require("../db_config.php");
     try{
-        $db=new PDO("mysql:host=$hostname;dbname=$dbname",$username);
+        $db=new PDO("mysql:host=$hostname;dbname=$dbname;charset=utf8",$username);
         $db-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $SQL = "INSERT INTO users VALUES (DEFAULT,?,?,?)";
         $st = $db->prepare($SQL);
@@ -29,7 +29,7 @@ if ($login=="") {
  if (!$res) 
    echo "Erreur d’ajout";
    else echo "L'ajout a été effectué";
-echo "<a href='../home.php'>Revenir</a> à la page de gestion";
+echo "<a href='liste_users.php'>Revenir</a> à la liste des users";
 
  $db=null;
 }catch (PDOException $e){

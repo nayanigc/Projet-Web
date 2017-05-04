@@ -1,6 +1,6 @@
 <?php
-session_start();
-$page_title="Supprime une type";
+
+$page_title="Supprime une inscription";
 include("../header.php");
 
 if (!isset($_GET['pid'])){

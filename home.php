@@ -1,5 +1,4 @@
 <?php
-
 require("auth/EtreAuthentifie.php");
 
 $title = 'Accueil';

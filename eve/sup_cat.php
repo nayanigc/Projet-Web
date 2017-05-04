@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 $page_title="Supprime une type";
 include("../header.php");
 
@@ -27,6 +27,6 @@ if (!isset($_GET['cid'])){
         echo "Erreur SQL:".$e->getMessage();
     }
 }
-echo "<a href='../home.php'>Revenir</a> à la page d'accueil";
+echo "<a href='liste_cat.php'>Revenir</a> à la liste des catégories";
 include("../footer.php");
 ?>

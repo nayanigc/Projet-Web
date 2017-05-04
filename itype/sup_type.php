@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 $page_title="Supprime une type";
 include("../header.php");
 
