@@ -34,7 +34,7 @@ if ($nom=="") {
         }else {
           echo $nom." existe deja";
         }
-echo "<a href='../home.php'>Revenir</a> à la page de gestion";
+echo "<a href='liste_type.php'>Revenir</a> à la page de gestion";
 
  $db=null;
 }catch (PDOException $e){

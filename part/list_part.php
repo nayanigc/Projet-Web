@@ -17,7 +17,7 @@ try{
     ?>
 <table>
     <style>table {border-collapse: collapse}
-        td,th {border: 1px solid black}
+       
     </style>
 		
 	<table class="table table-striped">

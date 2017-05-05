@@ -22,9 +22,10 @@ try{
     }else{
 ?>
     <table>
-        <style> table {border-collapse:collapse}
-        td,th {border: 1px solid black} </style>
-		<table class="table table-striped">
+        <style> table {border-collapse:collapse;
+			}
+        </style>
+		<table class="table table-striped"style="margin-right: 28%;">
 	<thead>
 		<th>Titre</th>
 		<th>Description</th>

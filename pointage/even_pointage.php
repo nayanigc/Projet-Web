@@ -16,9 +16,7 @@ try{
 		border-collapse:collapse
 		position: relative;			
 	}
-    td,th {
-			border: 1px solid black
-	} 
+    
 </style>
 <table class="table table-striped" style="margin-top: 10%;">
 	<thead>

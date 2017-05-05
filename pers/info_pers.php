@@ -34,7 +34,7 @@ if ($st->rowCount()==0){
 	<br />
 	<div class="titre"><h2>Liste des identifications</h2></div>
      <style> table { border-collapse: collapse }
-        td,th  {border: 1px solid black} </style>
+      </style>
 	<table class="table table-striped">
 	<thead>
 		<th>Nom du type</th>
@@ -90,7 +90,7 @@ if ($st->rowCount()==0){
 	
 <table>
      <style> table { border-collapse: collapse }
-        td,th  {border: 1px solid black} </style>
+       </style>
 	<table class="table table-striped">
 	<thead>
 		<th>users</th>
@@ -147,7 +147,7 @@ if ($st->rowCount()==0){
 	<div class="titre"><h2>Liste des inscription sans participation</h2></div>
 <table>
      <style> table { border-collapse: collapse }
-        td,th  {border: 1px solid black}
+      
 		html{
 		background-color: #d6cbe2;
 	}</style>

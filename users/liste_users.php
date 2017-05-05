@@ -20,7 +20,7 @@ if ($res->rowCount()==0){
     ?>    
 <table>
      <style> table { border-collapse: collapse }
-        td,th  {border: 1px solid black} </style>
+        </style>
 	<table class="table table-striped">
 	<thead>
 		<th>Login</th>

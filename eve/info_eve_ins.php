@@ -21,7 +21,7 @@ if ($st->rowCount()==0 || $st1->rowCount ()==0 ){
 }else {
     ?>  
      <style> table { border-collapse: collapse }
-        td,th  {border: 1px solid black} </style>
+       </style>
 	<table class="table table-striped">
 	<thead>
 		<th>Nom</th>
@@ -78,7 +78,7 @@ if ($st3->rowCount()==0){
 
 
      <style> table { border-collapse: collapse }
-        td,th  {border: 1px solid black} </style>
+       </style>
 	<table class="table table-striped">
 	<thead>
 		<th>Nom</th>

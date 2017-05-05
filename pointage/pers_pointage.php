@@ -25,7 +25,7 @@ if ($st->rowCount()==0){
 	<h2  class="titre" style="margin-left: 40%;"><?php echo $row['intitule'] ?></h2>
 	<br />
      <style> table { border-collapse: collapse }
-        td,th  {border: 1px solid black} </style>
+        </style>
 	<table class="table table-striped">
 	<thead>
 		<th>Nom</th>

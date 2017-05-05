@@ -21,7 +21,7 @@ try{
 
     <style>
 		table {border-collapse: collapse}
-        td,th {border: 1px solid black}
+        
 		body{background-color:#d6cbe2 }
     </style>
 	
