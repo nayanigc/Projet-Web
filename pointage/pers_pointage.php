@@ -16,7 +16,7 @@ $st = $db->prepare($SQL);
 $res = $st->execute(array($eid));
 	
 if ($st->rowCount()==0){
-    echo "<P>La liste est vide"; 
+    echo "<P>La liste est vide, cette personne n'a été inscrite à aucun événement"; 
 }else {
 	$row = $st->fetch();
 	$event_name = $row['intitule'];

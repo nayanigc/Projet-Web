@@ -31,6 +31,8 @@ if (isset($_POST['checkbox'])){
         }
     } else echo "erreur";
 	
+	echo "<a href='pers_pointage.php?eid=$eid'>retour</a>";
+	
 $db=null;
 }catch (PDOException $e){
   echo "Erreur SQL: ".$e->getMessage();

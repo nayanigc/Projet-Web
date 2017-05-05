@@ -27,7 +27,7 @@ if (!isset($_GET['tid'])){
         echo "Erreur SQL:".$e->getMessage();
     }
 }
-echo "<a href='../home.php'>Revenir</a> à la page d'accueil";
+echo "<a href='liste_type.php'>Revenir</a> à la page de gestion";
 echo "</div>";
 include("../footer.php");
 ?>

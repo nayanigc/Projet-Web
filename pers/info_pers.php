@@ -26,8 +26,8 @@ if ($st->rowCount()==0){
       <a href='ajout_form_id.php?pid=<?php echo $pid ?>'>Ajouter un type</a>
     <?php
 }else {
+	if (isset($_POST['nom'])&&isset($_POST['prenom'])) {
     ?>  
-  
 <div class="titre"><h1><?php echo $_POST['nom']." ".$_POST['prenom'] ?></h1></div>
 
 <div>
@@ -63,6 +63,7 @@ while($row=$st->fetch()) {
 <?php
     
 $db=null;
+		}
      };
 }catch (PDOException $e){
   echo "Erreur SQL: ".$e->getMessage();
@@ -81,7 +82,7 @@ $SQL="SELECT * FROM
         $st = $db->prepare($SQL);
         $res = $st->execute(array($pid));
 if ($st->rowCount()==0){
-    echo "<P>La liste est vide"; 
+    echo "<P>La liste est vide, inscription à aucun événement <br/>"; 
 }else {
     ?>  
 	<br />
@@ -186,8 +187,3 @@ $db=null;
 //}
 include("../footer.php");
 ?>
-
-	
-	
-	
-	

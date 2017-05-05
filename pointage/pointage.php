@@ -20,10 +20,10 @@ $res = $st2->execute(array($eid,$pid,$date,$uid));
 	
 if (!$res) echo "erreur de pointage";
 else echo "pointage réussi";
+	echo "<a href='pers_pointage.php?eid=$eid'>retour</a>";
 
 $db=null;
 }catch (PDOException $e){
   echo "Erreur SQL: ".$e->getMessage();
 }
 include("../footer.php");
-//echo "<a href='pointage/pers_pointage.php?eid=<?php echo $eid ?><!--I'>nformation sur l'evenement</a>"!-->
