@@ -1,7 +1,7 @@
 <?php
 require("../auth/EtreAuthentifie.php");
 ?>
-<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="style.css"/>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->

@@ -26,3 +26,4 @@ $db=null;
   echo "Erreur SQL: ".$e->getMessage();
 }
 include("../footer.php");
+//echo "<a href='pointage/pers_pointage.php?eid=<?php echo $eid ?><!--I'>nformation sur l'evenement</a>"!-->

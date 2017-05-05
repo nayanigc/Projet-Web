@@ -22,10 +22,11 @@ require("../auth/EtreAuthentifie.php");
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Liste<span class="caret"></span></a>
           <ul class="dropdown-menu">
-    		<li><a href="../part/list_part.php"s>Participation</a></li>
-            <li><a href="../eve/liste_even.php">Evenement</a></li>
-            <li><a href="../itype/liste_type.php">Type</a></li>  <li><a href="../pers/liste_pers.php">Personne</a></li>
-            <li><a href="../eve/liste_cat.php">Categorie</a></li>
+            <li> <a href="../part/list_part.php"s>Participation</a></li>
+            <li><a href="../itype/liste_type.php">Type</a></li>
+              <li><a href="../pers/liste_pers.php">Personne</a></li>
+			  <li><a href="../eve/liste_cat.php">Categorie</a></li>
+			  <li><a href="../eve/liste_even.php">Evenement</a></li>
           </ul>
         </li>
        <ul class="nav navbar-nav navbar-right">
