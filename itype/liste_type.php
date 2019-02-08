@@ -1,4 +1,5 @@
 <?php
+
 $page_title ="Liste type";
 include("../header.php");
 include("navbar.php");
@@ -37,7 +38,7 @@ try{
      ?>
     <tr>
        <td><?php echo htmlspecialchars($row['nom'])?></td>
-       <td><a href='mod_form_type.php?tid=<?php echo $row['tid'] ?>'>Modifie</a></td>
+       <td><a href='mod_form_type.php?tid=<?php echo $row['tid'] ?>'>Modifier</a></td>
        <td><a href='sup_type.php?tid=<?php echo $row['tid'] ?>'>Supprimer</a></td>
     </tr>
     
@@ -54,5 +55,6 @@ echo "</table>\n";
 }catch (PDOException $e){
     echo"Erreur SQL:".$e->getMessage();
 }
+
 include("../footer.php");
 ?>

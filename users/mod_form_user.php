@@ -1,5 +1,6 @@
 
 <?php
+require("../auth/EtreAuthentifie.php");
 include("../header.php");
 if(!isset($_GET['uid'])){
     echo "Erreur: uid non défini";

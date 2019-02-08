@@ -32,11 +32,7 @@
 	<div class="col-sm-4">
 <a href="part/list_part.php"><h2> Participations</h2> <br/></a>
 	</div>
-				 
-		  
-		  
-		
-	
+			
 	
 
 </div>

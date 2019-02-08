@@ -2,6 +2,7 @@
 
 //include("navbar2.php");
 $page_title ="Information personnel";
+
 include("../header.php");
 include("navbar3.php");
 include("info_per.php");
@@ -50,7 +51,8 @@ while($row=$st->fetch()) {
       <tr>
           <td><?php echo htmlspecialchars($row['nomType'])?></td> 
           <td><?php echo htmlspecialchars($row['valeur'])?></td>
-          <td><a href='mod_form_id.php?pid=<?php echo $pid ?>&tid=<?php echo $row['tid'] ?>'>Modification</a></td><td><a href='del_form_id.php?pid=<?php echo $pid ?>&tid=<?php echo $row['tid'] ?>'>Supprimer</a></td>
+          <td><a href='mod_form_id.php?pid=<?php echo $pid ?>&tid=<?php echo $row['tid'] ?>'>Modification</a></td>
+		  <td><a href='del_form_id.php?pid=<?php echo $pid ?>&tid=<?php echo $row['tid'] ?>'>Supprimer</a></td>
    
     </tr>
 
@@ -131,19 +133,20 @@ $db=null;
 try {
 $db= new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
 $db->setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-$SQL="	SELECT * FROM inscriptions INNER JOIN users on inscriptions.uid=users.uid INNER JOIN personnes ON inscriptions.pid = personnes.pid INNER JOIN evenements  on inscriptions.eid = evenements.eid
-		WHERE personnes.pid=?
-		AND NOT EXISTS (SELECT * FROM
-       participations INNER JOIN users on participations.uid=users.uid INNER JOIN personnes ON participations.pid = personnes.pid INNER JOIN evenements  on participations.eid = evenements.eid
-        WHERE personnes.pid=?)"
+$SQL="SELECT users.login as login ,intitule, description, dateDebut, dateFin, type, nom 
+    FROM evenements 
+    INNER JOIN categories ON evenements.cid = categories.cid
+    INNER JOIN inscriptions ON evenements.eid=inscriptions.eid INNER JOIN users on  inscriptions.uid =users.uid
+    WHERE inscriptions.eid != ALL (SELECT participations.eid FROM participations INNER JOIN inscriptions ON inscriptions.eid=participations.eid WHERE participations.pid=$pid and participations.eid=inscriptions.eid) and inscriptions.pid=$pid"
 ;
         $st = $db->prepare($SQL);
         $res = $st->execute(array($pid, $pid));
 if ($st->rowCount()==0){
-    echo "La liste inscriptions sans participation est vide"; 
+    echo "
+	La liste inscriptions sans participation est vide"; 
 }else {
     ?>  
-	
+	<br/>
 	<div class="titre"><h2>Liste des inscription sans participation</h2></div>
 <table>
      <style> table { border-collapse: collapse }
@@ -183,7 +186,6 @@ $db=null;
 }catch (PDOException $e){
   echo "Erreur SQL: ".$e->getMessage();
 }
-
 //}
 include("../footer.php");
 ?>

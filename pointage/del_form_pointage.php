@@ -1,4 +1,6 @@
-
+<?php
+require("../auth/EtreAuthentifie.php");
+?>
 <div class="titre" style ="   width: 21%;
     position: relative;
     right: -40%;

@@ -1,5 +1,7 @@
 <?php 
+
 $page_title ="Liste  utilisateur";
+
 include("../header.php");
 include("navbar.php");
 include("user.php");
@@ -48,5 +50,6 @@ $db=null;
 }catch (PDOException $e){
   echo "Erreur SQL: ".$e->getMessage();
 }
+
 include("../footer.php");
 ?>

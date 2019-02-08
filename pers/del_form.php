@@ -1,5 +1,5 @@
 <?php
-
+require("../auth/EtreAuthentifie.php");
 include("../header.php");
 ?>
 <div class="titre" style="

@@ -1,5 +1,5 @@
 <?php 
-session_start();
+require("../auth/EtreAuthentifie.php");
 ?>
 
 <div class="titre" style="

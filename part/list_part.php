@@ -1,4 +1,5 @@
 <?php
+
 $page_title ="Liste d'evenement";
 include("../header.php");
 include("navbar.php");
@@ -9,7 +10,7 @@ try{
     $db = new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
     $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     $SQL="SELECT * FROM participations INNER JOIN users on participations.uid=users.uid INNER JOIN personnes ON participations.pid = personnes.pid INNER JOIN evenements  on participations.eid = evenements.eid
-	ORDER BY participations.date DESC";
+	ORDER BY participations.date ASC";
     $res =$db->query($SQL);
         if ($res->rowCount()==0){
         echo"<p>La liste est vide";
@@ -56,5 +57,6 @@ echo "</table>\n";
 }catch (PDOException $e){
     echo"Erreur SQL:".$e->getMessage();
 }
+
 include("../footer.php");
 ?>

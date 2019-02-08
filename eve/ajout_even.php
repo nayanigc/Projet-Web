@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 $page_titre="Ajouter un evenement";
 include("../header.php");
 

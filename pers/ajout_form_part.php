@@ -1,5 +1,5 @@
 <?php
-session_start();
+require("../auth/EtreAuthentifie.php");
 include("../header.php");
 
 if(!isset($_GET['ptid']) ||!isset($_GET['eid'])||!isset($_GET['uid'])||!isset($_GET['pid'])){
@@ -11,8 +11,8 @@ if(!isset($_GET['ptid']) ||!isset($_GET['eid'])||!isset($_GET['uid'])||!isset($_
         $db=new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
         $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $SQL="SELECT * FROM participations INNER JOIN users on participations.uid=users.uid INNER JOIN personnes ON participations.pid = personnes.pid INNER JOIN evenements  on participations.eid = evenements.eid";
-
-        $res = $db->query($SQL);
+		$st = $db->prepare($SQL);
+		$res = $st -> execute ();
         $db=null;
      }catch (PDOException $e){
          echo "Erreur SQL: ".$e->getMessage();

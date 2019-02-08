@@ -55,26 +55,16 @@ $db=null;
 try {
 $db= new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
 $db->setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-$SQL3="SELECT nom, prenom, personnes.pid
-		FROM inscriptions
-		INNER JOIN users ON inscriptions.uid = users.uid
-		INNER JOIN personnes ON inscriptions.pid = personnes.pid
-		INNER JOIN evenements ON inscriptions.eid = evenements.eid
-		WHERE inscriptions.eid=?
-		AND NOT EXISTS 
-		(SELECT nom, prenom
-		FROM participations
-		INNER JOIN users ON participations.uid = users.uid
-		INNER JOIN personnes ON participations.pid = personnes.pid 
-		INNER JOIN evenements ON participations.eid = evenements.eid
-		WHERE participations.eid=?)
-		";
+$SQL3="SELECT nom, prenom ,personnes.pid as pid FROM personnes
+    INNER JOIN inscriptions ON personnes.pid = inscriptions.pid
+    WHERE inscriptions.pid != ALL (SELECT participations.pid FROM participations WHERE participations.eid=$eid) and inscriptions.eid=$eid";;
         $st3 = $db->prepare($SQL3);
         $res = $st3->execute(array($eid,$eid));
 if ($st3->rowCount()==0){
     echo "<P>La liste est vide"; 
 }else {
     ?>  
+		
 
 
      <style> table { border-collapse: collapse }

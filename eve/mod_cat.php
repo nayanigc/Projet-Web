@@ -33,6 +33,7 @@ if(!isset($_GET['cid'])){
     echo "Erreur SQL: ".$e->getMessage();
     }
 }
-echo "<a href='liste_cat.php'>Revenir</a> à la liste des catégories";
+include("liste_cat.php");
+//echo "<a href='liste_cat.php'>Revenir</a> à la liste des catégories";
 include("../footer.php");
 ?>

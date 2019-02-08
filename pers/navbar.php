@@ -1,6 +1,10 @@
 <?php
 require("../auth/EtreAuthentifie.php");
+$idm -> getIdentity();
+$idm ->getUid();
+$role = $idm ->getRole();
 ?>
+<?php if ($role == 'admin'){?>
 <link rel="stylesheet" href="style.css"/>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -37,3 +41,8 @@ require("../auth/EtreAuthentifie.php");
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<?php
+}else {
+ redirect("../home.php");
+}
+?>

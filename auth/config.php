@@ -9,10 +9,10 @@ $authTableData = [
 ];
 
 $pathFor = [
-    "login"  => "/cours/Projet/login.php",
-    "logout" => "/cours/Projet/logout.php",
-    "adduser" => "/cours/Projet/adduser.php",
-    "root"   => "/cours/Projet/",
+    "login"  => "/Projet%20Web/Projet/login.php",
+    "logout" => "/Projet%20Web/Projet/logout.php",
+    "adduser" => "/Projet%20Web/Projet/adduser.php",
+    "root"   => "/Projet%20Web/Projet/",
 ];
 
 const SKEY = '_Redirect';

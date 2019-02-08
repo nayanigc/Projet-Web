@@ -1,6 +1,5 @@
 <?php
-session_start();
-//TODO faire une recuperation de tid qui va permettre dajoute ou pas un type a une personne 
+
 $page_title="Ajouter une id";
 include("../header.php");
 

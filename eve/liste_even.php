@@ -1,4 +1,5 @@
 <?php
+
 $page_title="Liste evenement";
 include("../header.php");
 include("navbar.php");
@@ -67,5 +68,6 @@ try{
         }catch(PDOException $e){
         echo "Erreur SQL:".$e->getMessage();
         }
+
 include("../footer.php"); 
 ?>

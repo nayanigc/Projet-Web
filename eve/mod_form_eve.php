@@ -1,4 +1,7 @@
 <?php 
+
+require("../auth/EtreAuthentifie.php");
+
 if(!isset($_GET['eid']) ){
     include("liste_even.php");
 } else {
@@ -22,13 +25,7 @@ if(!isset($_GET['eid']) ){
         $SQL = "SELECT intitule,description,dateDebut,dateFin,evenements.cid,type FROM evenements INNER JOIN categories ON evenements.cid = categories.cid WHERE eid=?";
         $st= $db->prepare($SQL);
         $res = $st->execute(array($eid));
-        while($row=$st->fetch()){
-            echo 'Intitule: '.$row['intitule'].'</br>';
-            echo 'Description: '.$row['description'].'</br>';
-            echo 'DateDebut: '.$row['dateDebut'].'</br>';
-            echo 'DateFin: '.$row['dateFin'].'</br>';
-            echo 'Categorie: '.$row['cid'].'</br>';
-            echo 'type: '.$row['type'].'</br>';
+        if($row=$st->fetch()){
         }
     }catch(PDOException $e){
         echo "Erreur SQL:".$e->getMessage();
@@ -48,17 +45,17 @@ if(!isset($_GET['eid']) ){
                 </select></div>
 			  </div>
 		  <div class="intitu"><label for="inputIntitule" class="control-label">Intitule</label>
-    	  <input type="text" name="intitule" class="form-control form-input" id="inputIntitule" placeholder="intitule..." required value="<?= $data['intitule']??""?>"></div>
+    	  <input type="text" name="intitule" class="form-control form-input" id="inputIntitule" placeholder="intitule..." required value="<?= $row['intitule']??""?>"></div>
 		 </div>
                         
      	  <div><label for="inputDescription" class="control-label">Description</label>
-		  <textarea rows="5" type="text" name="description" class="form-control" id="inputDescription" placeholder="description..." required value="<?= $data['description']??""?>"></textarea></div>
+		  <textarea rows="5" type="text" name="description" class="form-control" id="inputDescription" placeholder="description..." required value="<?= $row['description']??""?>"></textarea></div>
   <div class="inline-element-root">
                         
     <p class="inline-element"><label for="inputDatedebut" class="control-label">Date de debut </label>
-    <input type="date" name="datedebut" class="form-control" id="inputDatedebut" placeholder="datedebut" required value="<?= $data['datedebut']??""?>"></p>
+    <input type="date" name="datedebut" class="form-control" id="inputDatedebut" placeholder="datedebut" required value="<?= $row['datedebut']??""?>"></p>
     <p class="inline-element1"><label for="inputDateFin" class="control-label">Date de fin</label>
-    <input type="date" name="datefin" class="form-control" id="inputDateFin" placeholder="datefin" required value="<?= $data['datefin']??""?>"></p>
+    <input type="date" name="datefin" class="form-control" id="inputDateFin" placeholder="datefin" required value="<?= $row['datefin']??""?>"></p>
      <p class="inline-element2"><label for="inputNomType" class="control-label">Type</label>
      <select class="form-control" name="type">
 		<option>Ouvert</option>

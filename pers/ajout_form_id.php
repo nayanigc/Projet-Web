@@ -1,5 +1,5 @@
 <?php 
-session_start();
+require("../auth/EtreAuthentifie.php");
 include("../header.php");
 
 if(!isset($_GET['pid']) ){
@@ -39,6 +39,7 @@ if(!isset($_GET['pid']) ){
  <label for="inputValeur" class="control-label">Valeur</label>
  <input type="text" name="valeur" class="form-control" id="inputValeur" placeholder="valeur" required value="<?= $data['valeur']??""?>">
  <button type="submit" style="margin-top: 4%;" class="btn btn-primary">Valider</button>
+<a href= "liste_pers.php">Revenir a la page precedent </a> 
 </form>
 </div>
 

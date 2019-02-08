@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 $page_title="Supprime une personne";
 include("../header.php");
 
@@ -8,7 +8,8 @@ if (!isset($_GET['pid'])){
 }else if (!isset($_POST["supprimer"])&&!isset($_POST["annuler"])){
     include("del_form.php");
 }else if ( isset ($_POST["annuler"])){
-    echo " Operation annulée";
+//    echo " Operation annulée";
+	include("liste_pers.php");
 }else{
     require("../db_config.php");
     try{
@@ -22,11 +23,12 @@ if (!isset($_GET['pid'])){
         if (!$res)
             echo"<p>Erreur</p>\n";
         else echo "<p>La suppression a été effectuée</p>";
+		     include("liste_pers.php");
             $db=null;
     }catch(PDOException $e){
         echo "Erreur SQL:".$e->getMessage();
     }
 }
-echo "<a href='liste_pers.php'>Revenir</a> à la liste des personnes</div>";
+/*redirect("liste_pers.php");*/
 include("../footer.php");
 ?>

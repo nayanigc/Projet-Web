@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 $page_title="Ajouter une categorie";
 include("../header.php");

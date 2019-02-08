@@ -9,24 +9,25 @@ if(!isset($_GET['pid'])){
 
 }else{
     try{
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    require("../db_config.php");
-    $db = new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username,$password);
-    $db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-    $SQL ="SELECT nom,prenom FROM personnes WHERE pid =:pid";
-        $st=$db->prepare($SQL);
-        $pid= $_GET["pid"];
-  $st->execute(['pid'=>$pid]);
-    if ($st->rowCount() == 0){
-        echo"<p> Erreur dans pid </p>\n";
-    }else{
+		$nom = $_POST['nom'];
+		$prenom = $_POST['prenom'];
+		require("../db_config.php");
+		$db = new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username,$password);
+		$db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+		$SQL ="SELECT nom,prenom FROM personnes WHERE pid =:pid";
+		$st=$db->prepare($SQL);
+		$pid= $_GET["pid"];
+  		$st->execute(['pid'=>$pid]);
+    	if ($st->rowCount() == 0){
+        	echo"<p> Erreur dans pid </p>\n";
+    	}else{
            $SQL="UPDATE personnes SET nom=?,prenom=? WHERE pid=?";
             $st = $db->prepare($SQL);
             $res = $st->execute(array($nom,$prenom,$pid));
         if (!$res)
             echo "<p>Erreur de modification</p>";
-       else echo "<p>La modification a été effectuée</p>";         
+        else
+			    include("liste_pers.php");
         }
     
     $db=null;
@@ -34,6 +35,5 @@ if(!isset($_GET['pid'])){
     echo "Erreur SQL: ".$e->getMessage();
     }
 }
-echo "<a href='list_pers.php'>Revenir</a> à la liste des personnes";
-include("../footer.php");
+	include("../footer.php");
 ?>

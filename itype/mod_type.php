@@ -34,6 +34,8 @@ if(!isset($_GET['tid'])){
     echo "Erreur SQL: ".$e->getMessage();
     }
 }
-echo "<a href='liste_type.php'>Revenir</a> à la page de gestion";
+
+include("liste_type.php");
+//echo "<a href='liste_type.php'>Revenir</a> à la page de gestion";
 include("../footer.php");
 ?>

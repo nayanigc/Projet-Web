@@ -1,5 +1,7 @@
 <?php
-session_start();
+
+require("../auth/EtreAuthentifie.php");
+
 ?>
 <div class="titre" style ="   width: 21%;
     position: relative;

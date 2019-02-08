@@ -1,12 +1,11 @@
 <?php
-require("auth/EtreAuthentifie.php");
+require_once("auth/EtreAuthentifie.php");
 
 $title = 'Accueil';
 include("header.php");
 
 $_SESSION['uid'] = $idm->getUid();
 
-	
 if($idm->getRole() == 'user'){
 	include("navbar.php");
 	include("mise_en_page2.php");	

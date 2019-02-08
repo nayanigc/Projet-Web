@@ -8,10 +8,11 @@ try {
 $db= new PDO("mysql:hostname=$hostname;dbname=$dbname;charset=utf8",$username);
 $db->setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 $SQL="SELECT * FROM personnes ORDER BY nom ";
-$res =$db->query($SQL); 
-
+$st =$db->prepare($SQL); 
+$res = $st -> execute ();
+	
    
-if ($res->rowCount()==0){
+if ($st->rowCount()==0){
     echo "<P>La liste est vide";
 ?>
 <div class="ajouter" title="Ajouter une personne"><a class="a" href='ajout_form_pers.php'>Ajouter</a></div>
@@ -29,7 +30,7 @@ if ($res->rowCount()==0){
 		<th>Consulter</th>
 	</thead>
 <?php
-while($row=$res->fetch()) {
+while($row=$st->fetch()) {
 ?>
  <form action ="info_pers.php?pid=<?php echo $row['pid'] ?>" method="post">
 	    <tr>
@@ -41,7 +42,7 @@ while($row=$res->fetch()) {
           <input type="hidden" name="nom" value="<?php echo htmlspecialchars($row['nom'])?>"/>
           <input type="hidden" name="prenom" value="<?php echo htmlspecialchars($row['prenom'])?>"/>
           
-          <td><input type=submit class="envoyer" value="Gerer les informations personnelles"/> 
+          <td><input type=submit class="btn btn-info" value="Gerer les informations personnelles"/> 
           </td>
         </tr>
 </form>
@@ -60,6 +61,7 @@ $db=null;
 }catch (PDOException $e){
   echo "Erreur SQL: ".$e->getMessage();
 }
+?><a href='javascript:history.go(-1)'>Revenir a la page precedent </a> <?php
 include("../footer.php");
 ?>
     

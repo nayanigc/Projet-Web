@@ -36,14 +36,14 @@ try{
     	}else{
 		?>
 			Cette personne à bien été inscrite
-		<a href='../eve/liste_even.php'>Revenir à la liste des évennements</a>
+		<a href='../eve/liste_even.php'>Revenir à la liste des événements</a>
 <?php
     $db=null;
      }
 	} else {
 	?>
-	Cette personne est déjà inscrite à cet évennement
-		<a href='../eve/liste_even.php'>Revenir à la liste des évennements</a>
+	Cette personne est déjà inscrite à cet événement
+		<a href='../eve/liste_even.php'>Revenir à la liste des événements</a>
 	<?php 
 	}	
         }catch(PDOException $e){

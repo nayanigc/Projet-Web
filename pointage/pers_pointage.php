@@ -20,7 +20,7 @@ if ($st->rowCount()==0){
 }else {
 	$row = $st->fetch();
 	$event_name = $row['intitule'];
-	
+	$type = $row['type'];
     ?> 
 	<h2  class="titre" style="margin-left: 40%;"><?php echo $row['intitule'] ?></h2>
 	<br />
